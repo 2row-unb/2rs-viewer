@@ -15,19 +15,21 @@ func _ready():
 
 func update_data(data):
 	print("[INFO] ViewerScreen: Updating data")
-	
+
 	heartbeat.text = str(data.heartbeat)
 	power.text = str(data.power)
 	speed.text = str(data.speed)
-	
+
 	minutes.text = "%02d" % data.timer_minutes
 	seconds.text = "%02d" % data.timer_seconds
-	
+
 	if data.has_higher_difficulty:
 		more.text = "/\\"
 	else:
 		more.text = ""
-	
+
+	difficulty.text = str(data.difficulty)
+
 	if data.has_lesser_difficulty:
 		less.text = "\\/"
 	else:
