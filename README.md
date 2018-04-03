@@ -60,6 +60,6 @@ The purpose of this system is to show the following data:
 
 ## History
 
-![v0.0.0.1](https://github.com/remarema-unb/2rs-viewer/wiki/screenshots/2018-04-03-18-24-41_v0_0_0_1.png)
+![v0.0.0.1](https://github.com/remarema-unb/2rs-viewer/wiki/screenshots/2018-04-03_v0_0_0_1.png)
 
 > Figure 1 - 2RS-Viewer v0.0.0.1
