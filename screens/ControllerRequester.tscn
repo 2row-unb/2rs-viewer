@@ -3,8 +3,8 @@
 [ext_resource path="res://scripts/ControllerRequester.gd" type="Script" id=1]
 [ext_resource path="res://scripts/StatusRequester.gd" type="Script" id=2]
 [ext_resource path="res://scripts/StateRequester.gd" type="Script" id=3]
-[ext_resource path="res://scripts/ResultRequester.gd" type="Script" id=4]
-[ext_resource path="res://scripts/QRCodeRequester.gd" type="Script" id=5]
+[ext_resource path="res://scripts/QRCodeRequester.gd" type="Script" id=4]
+[ext_resource path="res://scripts/ResultRequester.gd" type="Script" id=5]
 [ext_resource path="res://scripts/PowerRequester.gd" type="Script" id=6]
 [ext_resource path="res://scripts/SpeedRequester.gd" type="Script" id=7]
 [ext_resource path="res://scripts/TimerRequester.gd" type="Script" id=8]
@@ -37,7 +37,7 @@ body_size_limit = -1
 max_redirects = 8
 script = ExtResource( 3 )
 
-[node name="ResultRequester" type="HTTPRequest" parent="." index="3"]
+[node name="QRCodeRequester" type="HTTPRequest" parent="." index="3"]
 
 download_file = ""
 use_threads = true
@@ -45,7 +45,7 @@ body_size_limit = -1
 max_redirects = 8
 script = ExtResource( 4 )
 
-[node name="QRCodeRequester" type="HTTPRequest" parent="." index="4"]
+[node name="ResultRequester" type="HTTPRequest" parent="." index="4"]
 
 download_file = ""
 use_threads = true
@@ -91,9 +91,9 @@ script = ExtResource( 9 )
 
 [connection signal="request_completed" from="StateRequester" to="." method="_on_StateRequester_request_completed"]
 
-[connection signal="request_completed" from="ResultRequester" to="." method="_on_ResultRequester_request_completed"]
-
 [connection signal="request_completed" from="QRCodeRequester" to="." method="_on_QRCodeRequester_request_completed"]
+
+[connection signal="request_completed" from="ResultRequester" to="." method="_on_ResultRequester_request_completed"]
 
 [connection signal="request_completed" from="PowerRequester" to="." method="_on_PowerRequester_request_completed"]
 

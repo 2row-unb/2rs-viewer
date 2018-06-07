@@ -2,14 +2,14 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/qrcode.png-ade9bce58ef51062800dc0a5e2ace156.stex"
+path="res://.import/qrcode.png-1da587dc79230a4fc021ecd81314b86e.stex"
 
 [deps]
 
-source_file="res://mocks/controller/server/qrcode.png"
+source_file="res://mocks/controller/server/public/assets/images/qrcode.png"
 source_md5="818186e4e43dce6fa97006708614b197"
 
-dest_files=[ "res://.import/qrcode.png-ade9bce58ef51062800dc0a5e2ace156.stex" ]
+dest_files=[ "res://.import/qrcode.png-1da587dc79230a4fc021ecd81314b86e.stex" ]
 dest_md5="82a44439b3427cc207980e3b5e8c5ad4"
 
 [params]

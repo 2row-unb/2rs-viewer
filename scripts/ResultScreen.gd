@@ -25,8 +25,11 @@ func update_data(data):
 	seconds.text = "%02d" % data.timer_seconds
 
 	difficulty.text = str(data.difficulty)
+	render_qrcode(data)
 
 func render_qrcode(data):
 	if data.has_qrcode:
-		qrcode_label.text = "Copiar Resultados"
-		qrcode.set_texture(load("res://resources/qrcode.png"))
+		var file = File.new()
+		if file.file_exists("res://cache/qrcode.png"):
+			qrcode_label.text = "Copiar Resultados"
+			qrcode.set_texture(load("res://cache/qrcode.png"));

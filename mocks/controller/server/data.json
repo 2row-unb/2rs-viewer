@@ -1,0 +1,37 @@
+{
+  "power": {
+    "ok": true,
+    "power": 400
+  },
+  "speed": {
+    "ok": true,
+    "speed": 33
+  },
+  "timer": {
+    "ok": true,
+    "timer": 122
+  },
+  "difficulty": {
+    "ok": true,
+    "more": true,
+    "difficulty": 1,
+    "less": true
+  },
+  "status": {
+    "ok": true,
+    "errors": []
+  },
+  "state": {
+    "ok": true,
+    "state": 3
+  },
+  "result": {
+    "ok": true,
+    "power": 167,
+    "speed": 33,
+    "timer": 2401,
+    "difficulty": 1.2,
+    "performance": 72,
+    "qrcode": "http://localhost:20000/assets/images/qrcode.png"
+  }
+}

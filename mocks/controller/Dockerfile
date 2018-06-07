@@ -6,4 +6,4 @@ RUN npm install -g json-server
 
 WORKDIR /server
 
-CMD ["json-server", "data.js", "--port", "20000"]
+CMD ["json-server", "data.json", "--port", "20000", "--static", "./public"]

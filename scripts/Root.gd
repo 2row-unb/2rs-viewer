@@ -26,7 +26,6 @@ func update_scene():
 
 func handle_current_scene(data):	
 	if(scene.has_method("update_data")):
-		print("[INFO] Performing update_data")
 		scene.update_data(data)
 	pass
 

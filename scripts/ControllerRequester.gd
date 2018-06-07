@@ -186,6 +186,7 @@ func _on_QRCodeRequester_request_completed(result, response_code, headers, body)
 	if response_code == 200:
 		print("[INFO] ControllerRequester: Succesfully got QRCode")
 		data.has_qrcode = true
+		$QRCodeRequester.disable_requests()
 	else:
 		var error = "Há algum erro no caminho para o QRCode."
 		print("[ERROR] ControllerRequester: Couldn't get QRCode from 2RS-Controller")
