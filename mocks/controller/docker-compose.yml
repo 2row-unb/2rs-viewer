@@ -6,4 +6,4 @@ services:
     ports:
       - '20000:20000'
     volumes:
-      - './server:/code'
+      - './server:/server'

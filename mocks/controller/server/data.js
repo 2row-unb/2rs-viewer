@@ -21,10 +21,6 @@ module.exports = () => {
         y: 50
       }
     },
-    heartbeat: {
-      ok: true,
-      heartbeat: 100
-    },
     power: {
       ok: true,
       power: 400
@@ -46,6 +42,19 @@ module.exports = () => {
     status: {
       ok: true,
       errors: []
+    },
+    state: {
+      ok: true,
+      state: 3
+    },
+    result: {
+      ok: true,
+      power: 167,
+      speed: 33,
+      timer: 2401,
+      difficulty: 1.2,
+      performance: 72,
+      qrcode: "https://raw.githubusercontent.com/2row-unb/2rs-viewer/master/mocks/controller/server/qrcode.png"
     }
   }
   return data

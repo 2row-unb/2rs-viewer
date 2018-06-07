@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/ControllerRequester.gd" type="Script" id=1]
 [ext_resource path="res://scripts/StatusRequester.gd" type="Script" id=2]
-[ext_resource path="res://scripts/HeartbeatRequester.gd" type="Script" id=3]
-[ext_resource path="res://scripts/PowerRequester.gd" type="Script" id=4]
-[ext_resource path="res://scripts/SpeedRequester.gd" type="Script" id=5]
-[ext_resource path="res://scripts/TimerRequester.gd" type="Script" id=6]
-[ext_resource path="res://scripts/DifficultyRequester.gd" type="Script" id=7]
+[ext_resource path="res://scripts/StateRequester.gd" type="Script" id=3]
+[ext_resource path="res://scripts/ResultRequester.gd" type="Script" id=4]
+[ext_resource path="res://scripts/QRCodeRequester.gd" type="Script" id=5]
+[ext_resource path="res://scripts/PowerRequester.gd" type="Script" id=6]
+[ext_resource path="res://scripts/SpeedRequester.gd" type="Script" id=7]
+[ext_resource path="res://scripts/TimerRequester.gd" type="Script" id=8]
+[ext_resource path="res://scripts/DifficultyRequester.gd" type="Script" id=9]
 
 [node name="ControllerRequester" type="Node"]
 
@@ -27,31 +29,31 @@ body_size_limit = -1
 max_redirects = 8
 script = ExtResource( 2 )
 
-[node name="HeartbeatRequester" type="HTTPRequest" parent="." index="2"]
+[node name="StateRequester" type="HTTPRequest" parent="." index="2"]
 
 download_file = ""
-use_threads = false
+use_threads = true
 body_size_limit = -1
 max_redirects = 8
 script = ExtResource( 3 )
 
-[node name="PowerRequester" type="HTTPRequest" parent="." index="3"]
+[node name="ResultRequester" type="HTTPRequest" parent="." index="3"]
 
 download_file = ""
-use_threads = false
+use_threads = true
 body_size_limit = -1
 max_redirects = 8
 script = ExtResource( 4 )
 
-[node name="SpeedRequester" type="HTTPRequest" parent="." index="4"]
+[node name="QRCodeRequester" type="HTTPRequest" parent="." index="4"]
 
 download_file = ""
-use_threads = false
+use_threads = true
 body_size_limit = -1
 max_redirects = 8
 script = ExtResource( 5 )
 
-[node name="TimerRequester" type="HTTPRequest" parent="." index="5"]
+[node name="PowerRequester" type="HTTPRequest" parent="." index="5"]
 
 download_file = ""
 use_threads = false
@@ -59,7 +61,7 @@ body_size_limit = -1
 max_redirects = 8
 script = ExtResource( 6 )
 
-[node name="DifficultyRequester" type="HTTPRequest" parent="." index="6"]
+[node name="SpeedRequester" type="HTTPRequest" parent="." index="6"]
 
 download_file = ""
 use_threads = false
@@ -67,11 +69,31 @@ body_size_limit = -1
 max_redirects = 8
 script = ExtResource( 7 )
 
+[node name="TimerRequester" type="HTTPRequest" parent="." index="7"]
+
+download_file = ""
+use_threads = false
+body_size_limit = -1
+max_redirects = 8
+script = ExtResource( 8 )
+
+[node name="DifficultyRequester" type="HTTPRequest" parent="." index="8"]
+
+download_file = ""
+use_threads = false
+body_size_limit = -1
+max_redirects = 8
+script = ExtResource( 9 )
+
 [connection signal="timeout" from="RequestTimer" to="." method="_on_RequestTimer_timeout"]
 
 [connection signal="request_completed" from="StatusRequester" to="." method="_on_StatusRequester_request_completed"]
 
-[connection signal="request_completed" from="HeartbeatRequester" to="." method="_on_HeartbeatRequester_request_completed"]
+[connection signal="request_completed" from="StateRequester" to="." method="_on_StateRequester_request_completed"]
+
+[connection signal="request_completed" from="ResultRequester" to="." method="_on_ResultRequester_request_completed"]
+
+[connection signal="request_completed" from="QRCodeRequester" to="." method="_on_QRCodeRequester_request_completed"]
 
 [connection signal="request_completed" from="PowerRequester" to="." method="_on_PowerRequester_request_completed"]
 
