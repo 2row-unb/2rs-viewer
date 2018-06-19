@@ -4,8 +4,280 @@
 
 [node name="BodyScreen" index="0" instance=ExtResource( 1 )]
 
+_sections_unfolded = [ "Transform" ]
+
 [node name="Skeleton" parent="rig" index="0"]
 
-_sections_unfolded = [ "bones", "bones/1", "bones/72", "bones/74" ]
+bones/0/bound_children = [ NodePath("root") ]
+_sections_unfolded = [ "bones", "bones/62" ]
+
+[node name="Body" parent="rig/Skeleton" index="0"]
+
+_sections_unfolded = [ "Geometry", "LOD", "material" ]
+
+[node name="root" type="BoneAttachment" parent="rig/Skeleton" index="1"]
+
+bone_name = "root"
+_sections_unfolded = [ "Transform" ]
+
+[node name="hips" type="BoneAttachment" parent="rig/Skeleton/root" index="0"]
+
+transform = Transform( 1, 4.99336e-10, 3.52557e-10, 4.99336e-10, -0.334658, -0.94234, -3.52557e-10, 0.94234, -0.334658, 1.11022e-16, 3.22798, -0.04427 )
+bone_name = "DEF-hips"
+_sections_unfolded = [ "Transform" ]
+
+[node name="spine" type="BoneAttachment" parent="rig/Skeleton/root/hips" index="0"]
+
+editor/display_folded = true
+transform = Transform( 1, -2.38688e-07, -5.49024e-10, 2.09635e-07, 0.877176, 0.480169, -1.14129e-07, -0.480169, 0.877176, 7.21645e-15, -2.38419e-07, -0.604518 )
+bone_name = "DEF-spine"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="chest" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine" index="0"]
+
+transform = Transform( 1, 2.38016e-07, -1.02673e-08, -2.38238e-07, 0.99911, -0.0421653, 2.2213e-10, 0.0421653, 0.99911, 2.84217e-14, 1.78814e-07, -0.489093 )
+bone_name = "DEF-chest"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="neck" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest" index="0"]
+
+transform = Transform( 1, 2.68871e-10, 9.95509e-11, -1.90485e-10, 0.882553, -0.470213, -2.14287e-10, 0.470213, 0.882553, 6.10623e-15, -1.19209e-07, -0.994605 )
+bone_name = "DEF-neck"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="head" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck" index="0"]
+
+transform = Transform( 1, -3.49712e-09, -3.35704e-09, 4.39878e-09, 0.945641, 0.325213, 2.03725e-09, -0.325213, 0.945641, -1.02191e-15, 4.76837e-07, -0.363537 )
+bone_name = "DEF-head"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_shoulder" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck" index="1"]
+
+editor/display_folded = true
+transform = Transform( 0.538864, -0.36838, -0.757576, 0.778982, -0.124402, 0.614581, -0.320643, -0.921314, 0.219926, 0.0952337, 0.422115, 0.439869 )
+bone_name = "DEF-shoulder.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_upper_arm_1" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder" index="0"]
+
+transform = Transform( -0.0818406, 0.819677, -0.566949, -0.919208, 0.157768, 0.360786, 0.385174, 0.550671, 0.740542, 2.08616e-07, 4.76837e-07, -0.580266 )
+bone_name = "DEF-upper_arm.01.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_upper_arm_2" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1" index="0"]
+
+transform = Transform( 1, -4.47035e-08, 3.39933e-08, 3.72529e-08, 1, -4.84288e-08, -6.28643e-09, -9.31323e-08, 1, -9.53674e-07, 0, -0.551636 )
+bone_name = "DEF-upper_arm.02.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_forearm_1" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2" index="0"]
+
+transform = Transform( 0.99419, -0.105764, 0.0200336, 0.107423, 0.96288, -0.247634, 0.00690079, 0.248348, 0.968646, -9.53674e-07, -1.49012e-07, -0.551635 )
+bone_name = "DEF-forearm.01.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_forearm_2" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1" index="0"]
+
+transform = Transform( 0.0297169, 0.999558, -1.77883e-07, -0.999558, 0.0297169, -5.96046e-08, 2.98023e-08, 1.79745e-07, 1, 2.38419e-06, -5.96046e-08, -0.42479 )
+bone_name = "DEF-forearm.02.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_hand" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2" index="0"]
+
+transform = Transform( 0.990118, 0.000565168, 0.140235, 0.000572592, 0.999967, -0.00807273, -0.140235, 0.00807327, 0.990085, 0, -1.43051e-06, -0.42479 )
+bone_name = "DEF-hand.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_palm_1" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand" index="0"]
+
+editor/display_folded = true
+transform = Transform( 0.98985, -0.0881052, 0.111513, 0.0893739, 0.995977, -0.00641987, -0.110499, 0.016321, 0.993742, -0.0962145, 0.00554085, -0.2482 )
+bone_name = "DEF-palm.01.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_index_1_1" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_1" index="0"]
+
+editor/display_folded = true
+transform = Transform( 0.971553, 0.200029, -0.126783, -0.199276, 0.979764, 0.0187261, 0.127963, 0.00707136, 0.991754, -5.96046e-08, -9.53674e-07, -0.181345 )
+bone_name = "DEF-f_index.01.L.01"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_index_1_2" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_1/l_index_1_1" index="0"]
+
+transform = Transform( 1, 2.6077e-08, -2.98023e-08, -2.98023e-08, 1, 7.45058e-08, 2.98023e-08, -7.26432e-08, 1, 2.38419e-07, -1.43051e-06, -0.0635924 )
+bone_name = "DEF-f_index.01.L.02"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_index_2" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_1/l_index_1_1/l_index_1_2" index="0"]
+
+transform = Transform( 0.999383, 0.0139931, 0.0322014, -0.0140577, 0.9999, 0.00177929, -0.0321733, -0.00223087, 0.99948, 0, 9.53674e-07, -0.0635927 )
+bone_name = "DEF-f_index.02.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_index_3" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_1/l_index_1_1/l_index_1_2/l_index_2" index="0"]
+
+transform = Transform( 0.992871, 0.119136, -0.00368059, -0.119138, 0.992877, -0.000254903, 0.00362402, 0.000691578, 0.999993, 0, 4.76837e-07, -0.0933814 )
+bone_name = "DEF-f_index.03.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_thumb_1_1" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_1" index="1"]
+
+editor/display_folded = true
+transform = Transform( 0.250269, 0.781541, 0.571455, -0.796564, 0.501712, -0.337304, -0.550322, -0.370782, 0.74811, -0.0270628, 0.014957, 0.105769 )
+bone_name = "DEF-thumb.01.L.01"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_thumb_1_2" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_1/l_thumb_1_1" index="0"]
+
+transform = Transform( 1, 7.62101e-06, -1.76951e-06, -7.72718e-06, 1, -1.96695e-06, 2.05077e-06, 1.93715e-06, 1, -9.53674e-07, 3.57628e-07, -0.0844774 )
+bone_name = "DEF-thumb.01.L.02"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_thumb_2" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_1/l_thumb_1_1/l_thumb_1_2" index="0"]
+
+transform = Transform( 0.942926, 0.273595, -0.189835, -0.286054, 0.957331, -0.0411257, 0.170483, 0.0930811, 0.980954, 1.43051e-06, -8.34465e-07, -0.084477 )
+bone_name = "DEF-thumb.02.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_thumb_3" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_1/l_thumb_1_1/l_thumb_1_2/l_thumb_2" index="0"]
+
+transform = Transform( 0.99267, 0.0780782, -0.0922563, -0.0863913, 0.992202, -0.089844, 0.084522, 0.0971556, 0.991674, 0, 3.57628e-07, -0.105715 )
+bone_name = "DEF-thumb.03.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_palm_2" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand" index="1"]
+
+editor/display_folded = true
+transform = Transform( 0.998538, -0.0502449, 0.0199276, 0.0502777, 0.998735, -0.0011474, -0.0198447, 0.00214764, 0.999801, -0.01548, 0.000891209, -0.254365 )
+bone_name = "DEF-palm.02.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_middle_1_1" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_2" index="0"]
+
+transform = Transform( 0.993974, 0.091241, -0.0607648, -0.0910099, 0.995829, 0.00657555, 0.0611124, -0.00100528, 0.998131, -8.9407e-07, 0, -0.170755 )
+bone_name = "DEF-f_middle.01.L.01"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_middle_1_2" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_2/l_middle_1_1" index="0"]
+
+transform = Transform( 1, 3.07336e-08, -1.46031e-06, -2.6077e-08, 1, 3.60422e-07, 1.51992e-06, -3.60887e-07, 1, 0, -9.53674e-07, -0.0808806 )
+bone_name = "DEF-f_middle.01.L.02"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_middle_2" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_2/l_middle_1_1/l_middle_1_2" index="0"]
+
+transform = Transform( 0.999347, -0.0357237, 0.00539365, 0.0357247, 0.999362, -8.89716e-05, -0.0053871, 0.000281604, 0.999986, -2.38419e-07, -9.53674e-07, -0.0808794 )
+bone_name = "DEF-f_middle.02.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_middle_3" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_2/l_middle_1_1/l_middle_1_2/l_middle_2" index="0"]
+
+transform = Transform( 0.999632, 0.0227464, -0.0147338, -0.0227375, 0.999741, 0.000769729, 0.0147475, -0.000434439, 0.999891, 0, 1.43051e-06, -0.12262 )
+bone_name = "DEF-f_middle.03.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_palm_3" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand" index="2"]
+
+editor/display_folded = true
+transform = Transform( 0.983649, -0.0018779, -0.180088, 0.00380708, 0.999939, 0.0103674, 0.180057, -0.0108835, 0.983596, 0.0433896, -0.00249767, -0.243439 )
+bone_name = "DEF-palm.03.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_ring_1_1" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_3" index="0"]
+
+transform = Transform( 0.998114, -0.0388767, 0.0475461, 0.0390567, 0.999234, -0.00287371, -0.0473963, 0.00472574, 0.998866, -1.60933e-06, -1.90735e-06, -0.161911 )
+bone_name = "DEF-f_ring.01.L.01"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_ring_1_2" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_3/l_ring_1_1" index="0"]
+
+transform = Transform( 1, -7.45058e-09, 2.98023e-08, 0, 1, -3.1665e-08, 0, 3.35276e-08, 1, -5.96046e-08, 4.76837e-07, -0.071923 )
+bone_name = "DEF-f_ring.01.L.02"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_ring_2" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_3/l_ring_1_1/l_ring_1_2" index="0"]
+
+transform = Transform( 0.999958, 0.00192967, -0.00900123, -0.00192169, 0.999998, 0.000897387, 0.00900298, -0.000880057, 0.999959, 1.78814e-07, 0, -0.0719218 )
+bone_name = "DEF-f_ring.02.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_ring_3" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_3/l_ring_1_1/l_ring_1_2/l_ring_2" index="0"]
+
+transform = Transform( 0.999675, -0.00293938, 0.0253175, 0.00300302, 0.999992, -0.00247497, -0.02531, 0.0025502, 0.999676, 1.49012e-07, 4.76837e-07, -0.12223 )
+bone_name = "DEF-f_ring.03.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_palm_4" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand" index="3"]
+
+editor/display_folded = true
+transform = Transform( 0.945882, 0.10241, -0.307926, -0.101918, 0.994635, 0.0177269, 0.30809, 0.0146155, 0.951245, 0.10905, -0.00627851, -0.225738 )
+bone_name = "DEF-palm.04.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_pinky_1_1" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_4" index="0"]
+
+transform = Transform( 0.964889, -0.215446, 0.150252, 0.216857, 0.976178, 0.00712801, -0.148208, 0.0257062, 0.988623, -1.01328e-06, -9.53674e-07, -0.158709 )
+bone_name = "DEF-f_pinky.01.L.01"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_pinky_1_2" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_4/l_pinky_1_1" index="0"]
+
+transform = Transform( 1, -1.49012e-08, -9.98378e-07, -1.49012e-08, 1, -3.72529e-09, 1.01328e-06, 0, 1, -1.04308e-07, 4.76837e-07, -0.061337 )
+bone_name = "DEF-f_pinky.01.L.02"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_pinky_2" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_4/l_pinky_1_1/l_pinky_1_2" index="0"]
+
+transform = Transform( 0.999964, 0.00675559, 0.00513706, -0.00675109, 0.999977, -0.000890821, -0.00514299, 0.000856105, 0.999987, 2.08616e-07, -9.53674e-07, -0.0613377 )
+bone_name = "DEF-f_pinky.02.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_pinky_3" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck/l_shoulder/l_upper_arm_1/l_upper_arm_2/l_forearm_1/l_forearm_2/l_hand/l_palm_4/l_pinky_1_1/l_pinky_1_2/l_pinky_2" index="0"]
+
+transform = Transform( 0.998572, -0.0409763, 0.03428, 0.0411953, 0.999135, -0.00570733, -0.0340165, 0.00711136, 0.999396, 1.3411e-07, 0, -0.0883296 )
+bone_name = "DEF-f_pinky.03.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="r_shoulder" type="BoneAttachment" parent="rig/Skeleton/root/hips/spine/chest/neck" index="2"]
+
+transform = Transform( 0.538864, 0.36838, 0.757576, -0.778982, -0.124402, 0.614581, 0.320643, -0.921314, 0.219926, -0.0952337, 0.422115, 0.439869 )
+bone_name = "DEF-shoulder.R"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_thigh_1" type="BoneAttachment" parent="rig/Skeleton/root/hips" index="1"]
+
+transform = Transform( 0.997636, -0.00586373, -0.068461, -0.0278413, -0.945385, -0.324756, -0.062818, 0.325895, -0.943316, 0.311356, 0.105218, -0.226126 )
+bone_name = "DEF-thigh.01.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_thigh_2" type="BoneAttachment" parent="rig/Skeleton/root/hips/l_thigh_1" index="0"]
+
+transform = Transform( 1, 6.51926e-08, -3.88754e-08, 1.93994e-06, 1.00001, 2.70084e-08, 3.9829e-07, 1.78721e-06, 1, -1.19209e-07, 1.56462e-07, -0.797937 )
+bone_name = "DEF-thigh.02.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_shin_1" type="BoneAttachment" parent="rig/Skeleton/root/hips/l_thigh_1/l_thigh_2" index="0"]
+
+transform = Transform( 0.997398, 0.0149084, 0.0705389, -0.00542783, 0.991138, -0.132729, -0.0718925, 0.132, 0.988639, 1.19209e-07, 3.1665e-08, -0.797936 )
+bone_name = "DEF-shin.01.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_shin_2" type="BoneAttachment" parent="rig/Skeleton/root/hips/l_thigh_1/l_thigh_2/l_shin_1" index="0"]
+
+transform = Transform( 0.998056, -0.062329, -1.10886e-08, 0.062329, 0.998056, -1.49012e-08, -4.65661e-09, -1.49012e-08, 1, 0, 2.98023e-08, -0.710844 )
+bone_name = "DEF-shin.02.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_foot" type="BoneAttachment" parent="rig/Skeleton/root/hips/l_thigh_1/l_thigh_2/l_shin_1/l_shin_2" index="0"]
+
+transform = Transform( 0.994027, 0.0443972, -0.0996905, 0.0443964, 0.669974, 0.741056, 0.0996909, -0.741056, 0.664001, 5.96046e-08, -3.72529e-08, -0.710844 )
+bone_name = "DEF-foot.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="l_toe" type="BoneAttachment" parent="rig/Skeleton/root/hips/l_thigh_1/l_thigh_2/l_shin_1/l_shin_2/l_foot" index="0"]
+
+transform = Transform( -0.994515, 0.0981456, 0.0361415, -0.0471173, -0.728937, 0.682957, 0.0933741, 0.677508, 0.729564, -8.9407e-08, -5.96046e-08, -0.346112 )
+bone_name = "DEF-toe.L"
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 

@@ -1,37 +1,14 @@
 {
-  "power": {
-    "ok": true,
-    "power": 400
-  },
-  "speed": {
-    "ok": true,
-    "speed": 33
-  },
-  "timer": {
-    "ok": true,
-    "timer": 122
-  },
-  "difficulty": {
-    "ok": true,
-    "more": true,
-    "difficulty": 1,
-    "less": true
-  },
-  "status": {
-    "ok": true,
-    "errors": []
-  },
-  "state": {
-    "ok": true,
-    "state": 2
-  },
-  "result": {
-    "ok": true,
-    "power": 167,
+  "angles": {
+    "athlete": {
+      "l_thigh_1": [0, 0.3, 0.6]
+    },
+    "difficulty": 2,
+    "errors": [],
+    "power": 400,
     "speed": 33,
-    "timer": 2401,
-    "difficulty": 1.2,
-    "performance": 72,
-    "qrcode": "http://localhost:20000/assets/images/qrcode.png"
+    "state": 2,
+    "status": "ok",
+    "timer": 122
   }
 }

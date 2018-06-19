@@ -154,7 +154,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Size Flags", "custom_fonts" ]
 
-[node name="ViewportContainer2" type="ViewportContainer" parent="MarginContainer/VerticalContainer/MotionContainer/AthleteContainer" index="1"]
+[node name="Container" type="ViewportContainer" parent="MarginContainer/VerticalContainer/MotionContainer/AthleteContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -174,7 +174,7 @@ stretch = true
 stretch_shrink = 1
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="Viewport" type="Viewport" parent="MarginContainer/VerticalContainer/MotionContainer/AthleteContainer/ViewportContainer2" index="0"]
+[node name="Viewport" type="Viewport" parent="MarginContainer/VerticalContainer/MotionContainer/AthleteContainer/Container" index="0"]
 
 arvr = false
 size = Vector2( 481, 324 )
@@ -201,7 +201,7 @@ shadow_atlas_quad_2 = 0
 shadow_atlas_quad_3 = 0
 _sections_unfolded = [ "Audio Listener", "GUI", "Physics", "Render Target", "Rendering" ]
 
-[node name="Athlete" parent="MarginContainer/VerticalContainer/MotionContainer/AthleteContainer/ViewportContainer2/Viewport" index="0" instance=ExtResource( 3 )]
+[node name="Athlete" parent="MarginContainer/VerticalContainer/MotionContainer/AthleteContainer/Container/Viewport" index="0" instance=ExtResource( 3 )]
 
 [node name="CenterBorder" type="ColorRect" parent="MarginContainer/VerticalContainer/MotionContainer" index="2"]
 
@@ -264,7 +264,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Size Flags", "custom_fonts" ]
 
-[node name="ViewportContainer" type="ViewportContainer" parent="MarginContainer/VerticalContainer/MotionContainer/IdealContainer" index="1"]
+[node name="Container" type="ViewportContainer" parent="MarginContainer/VerticalContainer/MotionContainer/IdealContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -283,7 +283,7 @@ size_flags_stretch_ratio = 7.0
 stretch = true
 stretch_shrink = 1
 
-[node name="Viewport" type="Viewport" parent="MarginContainer/VerticalContainer/MotionContainer/IdealContainer/ViewportContainer" index="0"]
+[node name="Viewport" type="Viewport" parent="MarginContainer/VerticalContainer/MotionContainer/IdealContainer/Container" index="0"]
 
 arvr = false
 size = Vector2( 481, 324 )
@@ -310,7 +310,7 @@ shadow_atlas_quad_2 = 0
 shadow_atlas_quad_3 = 0
 _sections_unfolded = [ "Rendering", "Shadow Atlas" ]
 
-[node name="Ideal" parent="MarginContainer/VerticalContainer/MotionContainer/IdealContainer/ViewportContainer/Viewport" index="0" instance=ExtResource( 3 )]
+[node name="Ideal" parent="MarginContainer/VerticalContainer/MotionContainer/IdealContainer/Container/Viewport" index="0" instance=ExtResource( 3 )]
 
 [node name="RightBorder" type="ColorRect" parent="MarginContainer/VerticalContainer/MotionContainer" index="4"]
 
