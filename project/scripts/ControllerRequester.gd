@@ -14,7 +14,7 @@ class BodyMember:
 class Body:
 	var legs = BodyMember.new()
 	var arms = BodyMember.new()
-	var chest = [0.0, 0.0, 0.0]
+	var root = [0.0, 0.0, 0.0]
 
 class Dataset:
 	var athlete = Body.new()
@@ -27,8 +27,9 @@ class Dataset:
 	var difficulty = 0
 	var errors = Array()
 
+const URL = "http://localhost:5000/"
 # const URL = "http://192.168.25.86:5000/"
-const URL = "http://localhost:20000/"
+# const URL = "http://localhost:20000/"
 
 var data = Dataset.new()
 
@@ -65,17 +66,20 @@ func extract_info(result):
 
 func extract_athlete(athlete):
 	if athlete != null:
-		if data.athlete.legs:
+		if athlete.legs:
 			data.athlete.legs.ul = athlete.legs.ul
 			data.athlete.legs.ll = athlete.legs.ll
 			data.athlete.legs.ur = athlete.legs.ur
 			data.athlete.legs.lr = athlete.legs.lr
 
-		if data.athlete.arms:
+		if athlete.arms:
 			data.athlete.arms.ul = athlete.arms.ul
 			data.athlete.arms.ll = athlete.arms.ll
 			data.athlete.arms.ur = athlete.arms.ur
 			data.athlete.arms.lr = athlete.arms.lr
+
+		if athlete.root:
+			data.athlete.root = athlete.root
 	pass
 
 func _on_RequestTimer_timeout():

@@ -26,7 +26,7 @@ func _process(delta):
 		if(current_state != $ControllerRequester.WAITING):
 			current_state = $ControllerRequester.WAITING
 			update_scene()
-		print("[ERROR] Root: 2RS-Controller is not running")
+			print("[ERROR] Root: No response from the server. Performing attempts without logging it.")
 	handle_current_scene(data)
 	pass
 
@@ -38,7 +38,7 @@ func update_scene():
 	get_tree().get_root().get_child(0).add_child(scene)
 	pass
 
-func handle_current_scene(data):	
+func handle_current_scene(data):
 	if(scene.has_method("update_data")):
 		scene.update_data(data)
 	pass
