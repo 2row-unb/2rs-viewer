@@ -200,7 +200,7 @@ func set_default_head(skeleton):
 	base_transforms[HEAD] = transform
 	pass
 
-func set_default_head(skeleton):
+func set_default_chest(skeleton):
 	var transform = skeleton.get_bone_pose(CHEST)
 	transform = transform.rotated(Vector3(1.0,0.0,0.0), 0.0)
 	skeleton.set_bone_pose(CHEST, transform)
