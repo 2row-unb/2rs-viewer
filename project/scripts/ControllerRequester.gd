@@ -22,8 +22,8 @@ class Dataset:
 	var has_qrcode = false
 	var errors = Array()
 
-#const URL = "http://192.168.10.176:5000/"
-const URL = "http://localhost:20000/"
+const URL = "http://192.168.25.86:5000/"
+# const URL = "http://localhost:20000/"
 
 var data = Dataset.new()
 
@@ -38,7 +38,7 @@ func get_current_data():
 func clear_errors():
 	data.errors.clear()
 	pass
-	
+
 func extract_angles(result):
 	if result.status == "ok":
 		data.athlete.l_thigh_1[0] = result.athlete.l_thigh_1[0]

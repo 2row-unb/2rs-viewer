@@ -7,10 +7,10 @@ path="res://.import/athlete.dae-6efe528b2941d4e6665cc9328ad5fa4a.scn"
 [deps]
 
 source_file="res://imports/athlete.dae"
-source_md5="3c27f465b2d08c2b46ab43e496619774"
+source_md5="6921b921d8668c6bb39ab8c5745b70fa"
 
 dest_files=[ "res://.import/athlete.dae-6efe528b2941d4e6665cc9328ad5fa4a.scn" ]
-dest_md5="73a105c43ce0c086a0231b90f7d20092"
+dest_md5="a3041c6115a7f7ff2ec7f7b23cadd865"
 
 [params]
 
@@ -27,7 +27,7 @@ meshes/ensure_tangents=true
 meshes/storage=0
 meshes/light_baking=0
 meshes/lightmap_texel_size=0.1
-external_files/store_in_subdir=true
+external_files/store_in_subdir=false
 animation/import=true
 animation/fps=15
 animation/filter_script=""

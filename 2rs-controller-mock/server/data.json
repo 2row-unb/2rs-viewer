@@ -1,7 +1,7 @@
 {
   "angles": {
     "athlete": {
-      "l_thigh_1": [0, 0.3, 0.6]
+      "l_thigh_1": [0.0, 0.0, 0.01]
     },
     "difficulty": 2,
     "errors": [],
