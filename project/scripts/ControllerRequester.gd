@@ -5,31 +5,36 @@ const WAITING = 1
 const IN_ACTIVITY = 2
 const AFTER_ACTIVITY = 3
 
-class Athlete:
-	var l_thigh_1 = [ 0.0, 0.0, 0.0 ]
+class BodyMember:
+	var ul = [0.0, 0.0, 0.0]
+	var ll = [0.0, 0.0, 0.0]
+	var ur = [0.0, 0.0, 0.0]
+	var lr = [0.0, 0.0, 0.0]
+
+class Body:
+	var legs = BodyMember.new()
+	var arms = BodyMember.new()
+	var chest = [0.0, 0.0, 0.0]
 
 class Dataset:
-	var athlete = Athlete.new()
+	var athlete = Body.new()
+	var ideal = Body.new()
 	var state = 0
-	var performance = 0
 	var power = 0
 	var speed = 0
 	var timer_minutes = 0
 	var timer_seconds = 0
-	var has_higher_difficulty = false
 	var difficulty = 0
-	var has_lesser_difficulty = false
-	var has_qrcode = false
 	var errors = Array()
 
-const URL = "http://192.168.25.86:5000/"
-# const URL = "http://localhost:20000/"
+# const URL = "http://192.168.25.86:5000/"
+const URL = "http://localhost:20000/"
 
 var data = Dataset.new()
 
 func _ready():
 	print("[INFO] ControllerRequester: ready")
-	$AnglesRequester.set_url(URL)
+	$InfoRequester.set_url(URL)
 	pass
 
 func get_current_data():
@@ -39,32 +44,48 @@ func clear_errors():
 	data.errors.clear()
 	pass
 
-func extract_angles(result):
-	if result.status == "ok":
-		data.athlete.l_thigh_1[0] = result.athlete.l_thigh_1[0]
-		data.athlete.l_thigh_1[1] = result.athlete.l_thigh_1[1]
-		data.athlete.l_thigh_1[2] = result.athlete.l_thigh_1[2]
+func extract_info(result):
+	if result.state == IN_ACTIVITY:
+		extract_athlete(result.athlete)
 		data.difficulty = result.difficulty
 		data.power = result.power
 		data.speed = result.speed
 		data.state = result.state
 		data.timer_minutes = int(result.timer) / 60
 		data.timer_seconds = int(result.timer) % 60
+	elif result.state == WAITING:
+		pass
+	elif result.state == AFTER_ACTIVITY:
+		pass
 	else:
 		data.state = NO_RESPONSE
 		for error in result.errors:
 			data.errors.push_back(error)
 	pass
 
-func _on_RequestTimer_timeout():
-	$AnglesRequester.perform_request()
+func extract_athlete(athlete):
+	if athlete != null:
+		if data.athlete.legs:
+			data.athlete.legs.ul = athlete.legs.ul
+			data.athlete.legs.ll = athlete.legs.ll
+			data.athlete.legs.ur = athlete.legs.ur
+			data.athlete.legs.lr = athlete.legs.lr
+
+		if data.athlete.arms:
+			data.athlete.arms.ul = athlete.arms.ul
+			data.athlete.arms.ll = athlete.arms.ll
+			data.athlete.arms.ur = athlete.arms.ur
+			data.athlete.arms.lr = athlete.arms.lr
 	pass
 
-func _on_AnglesRequester_request_completed(result, response_code, headers, body):
+func _on_RequestTimer_timeout():
+	$InfoRequester.perform_request()
+	pass
+
+func _on_InfoRequester_request_completed(result, response_code, headers, body):
 	if response_code == 200:
-		extract_angles(JSON.parse(body.get_string_from_utf8()).result)
+		extract_info(JSON.parse(body.get_string_from_utf8()).result)
 	else:
 		var error = "Não foi possível sincronizar os dados."
 		data.errors.push_back(error)
-		print("[ERROR] ControllerREquester: Couldn't get 2RS-Controller Angles")
 	pass

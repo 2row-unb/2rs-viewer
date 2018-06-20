@@ -10,12 +10,13 @@ onready var less = $MarginContainer/VerticalContainer/StatusContainer/RightConta
 onready var athlete_skeleton = $MarginContainer/VerticalContainer/MotionContainer/AthleteContainer/Container/Viewport/Athlete/BodyScreen/Armature/Skeleton
 onready var ideal_skeleton = $MarginContainer/VerticalContainer/MotionContainer/IdealContainer/Container/Viewport/Ideal/BodyScreen/Armature/Skeleton
 
-const UPPER_ARM_L = 3
-const UPPER_LEG_L = 29
-const LOWER_LEG_L = 30
+const ARM_UL = 3
+const ARM_UR = 16
 
-const UPPER_ARM_R = 16
-const UPPER_LEG_R = 32
+const LEG_UL = 29
+const LEG_LL = 30
+const LEG_UR = 32
+const LEG_LR = 33
 
 var base_transforms = {}
 
@@ -28,80 +29,95 @@ func _ready():
 func update_data(data):
 	power.text = str(data.power)
 	speed.text = str(data.speed)
-	# power.text = str(data.athlete.l_thigh_1[0])
-	# speed.text = str(data.athlete.l_thigh_1[1])
 
 	minutes.text = "%02d" % data.timer_minutes
 	seconds.text = "%02d" % data.timer_seconds
 
 	difficulty.text = str(data.difficulty)
-	# difficulty.text = str(data.athlete.l_thigh_1[2])
 
-	if data.difficulty == 1:
+	if data.difficulty < 1:
 		less.text = ""
 		more.text = ">"
-	elif data.difficulty == 2:
+	elif data.difficulty < 3:
 		more.text = "<"
 		more.text = ">"
 	else:
 		less.text = "<"
 		more.text = ""
 
-	update_athlete(data)
+	update_athlete(data.athlete)
 	pass
 
-func update_athlete(data):
-	var angles = data.athlete.l_thigh_1
-	var transform = base_transforms[UPPER_LEG_L]
-	transform = transform.rotated(Vector3(0.0, 1.0, 0.0), angles[1])
-	transform = transform.rotated(Vector3(0.0, 0.0, 1.0), angles[2])
-	transform = transform.rotated(Vector3(1.0, 0.0, 0.0), angles[0])
-	# var transform = base_transforms[LOWER_LEG_L]
-	# transform = transform.rotated(Vector3(0.0,1.0,0.0), PI/1.5)
-	# athlete_skeleton.set_bone_pose(LOWER_LEG_L, transform)
-	# transform = base_transforms[UPPER_LEG_L]
-	# transform = transform.rotated(Vector3(0.0,1.0,0.0), -PI/4)
-	athlete_skeleton.set_bone_pose(UPPER_LEG_L, transform)
+func update_athlete(athlete):
+	update_legs(athlete_skeleton, athlete.legs)
+	#update_arms(athlete_skeleton, athlete.arms)
 	pass
+
+func update_legs(skeleton, legs):
+	rotate(skeleton, LEG_UL, legs.ul, false)
+	rotate(skeleton, LEG_LL, legs.ll, false)
+	rotate(skeleton, LEG_UR, legs.ur, true)
+	rotate(skeleton, LEG_LR, legs.lr, true)
+	pass
+
+# Transforms
+
+func rotate(skeleton, bone, angles, is_right_side):
+	var transform = base_transforms[bone]
+	if(is_right_side):
+		transform = transform.rotated(Vector3(0.0, 1.0, 0.0), angles[1])
+		transform = transform.rotated(Vector3(0.0, 0.0, 1.0), angles[2])
+		transform = transform.rotated(Vector3(1.0, 0.0, 0.0), angles[0])
+	else:
+		transform = transform.rotated(Vector3(1.0, 0.0, 0.0), angles[0])
+		transform = transform.rotated(Vector3(0.0, 1.0, 0.0), angles[1])
+		transform = transform.rotated(Vector3(0.0, 0.0, 1.0), angles[2])
+	skeleton.set_bone_pose(bone, transform)
+	pass
+
+# Default
 
 func set_default_pose(skeleton):
 	set_default_left_upper_arm(skeleton)
-	set_default_left_upper_leg(skeleton)
 	set_default_left_hand(skeleton)
+
 	set_default_right_upper_arm(skeleton)
-	set_default_right_upper_leg(skeleton)
 	set_default_right_hand(skeleton)
-	base_transforms[LOWER_LEG_L] = athlete_skeleton.get_bone_pose(LOWER_LEG_L)
+
+	set_default_left_upper_leg(skeleton)
+	set_default_right_upper_leg(skeleton)
+	base_transforms[LEG_LL] = athlete_skeleton.get_bone_pose(LEG_LL)
+	base_transforms[LEG_LR] = athlete_skeleton.get_bone_pose(LEG_LR)
 	pass
 
 func set_default_left_upper_arm(skeleton):
-	var transform = skeleton.get_bone_pose(UPPER_ARM_L)
+	var transform = skeleton.get_bone_pose(ARM_UL)
 	transform = transform.rotated(Vector3(0.0,0.0,1.0), -PI/3)
 	transform = transform.rotated(Vector3(0.0,1.0,0.0), -PI/2)
-	skeleton.set_bone_pose(UPPER_ARM_L, transform)
-	base_transforms[UPPER_ARM_L] = transform
+	skeleton.set_bone_pose(ARM_UL, transform)
+	base_transforms[ARM_UL] = transform
 	pass
 
 func set_default_right_upper_arm(skeleton):
-	var transform = skeleton.get_bone_pose(UPPER_ARM_R)
+	var transform = skeleton.get_bone_pose(ARM_UR)
 	transform = transform.rotated(Vector3(0.0,0.0,1.0), PI/3)
 	transform = transform.rotated(Vector3(0.0,1.0,0.0), -PI/2)
-	skeleton.set_bone_pose(UPPER_ARM_R, transform)
-	base_transforms[UPPER_ARM_R] = transform
+	skeleton.set_bone_pose(ARM_UR, transform)
+	base_transforms[ARM_UR] = transform
 	pass
 
 func set_default_left_upper_leg(skeleton):
-	var transform = skeleton.get_bone_pose(UPPER_LEG_L)
+	var transform = skeleton.get_bone_pose(LEG_UL)
 	transform = transform.rotated(Vector3(0.0,1.0,0.0), -PI/2)
-	skeleton.set_bone_pose(UPPER_LEG_L, transform)
-	base_transforms[UPPER_LEG_L] = transform
+	skeleton.set_bone_pose(LEG_UL, transform)
+	base_transforms[LEG_UL] = transform
 	pass
 
 func set_default_right_upper_leg(skeleton):
-	var transform = skeleton.get_bone_pose(UPPER_LEG_R)
+	var transform = skeleton.get_bone_pose(LEG_UR)
 	transform = transform.rotated(Vector3(0.0,1.0,0.0), -PI/2)
-	skeleton.set_bone_pose(UPPER_LEG_R, transform)
-	base_transforms[UPPER_LEG_R] = transform
+	skeleton.set_bone_pose(LEG_UR, transform)
+	base_transforms[LEG_UR] = transform
 	pass
 
 func set_default_left_hand(skeleton):

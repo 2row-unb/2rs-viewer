@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/ControllerRequester.gd" type="Script" id=1]
-[ext_resource path="res://scripts/AnglesRequester.gd" type="Script" id=2]
+[ext_resource path="res://scripts/InfoRequester.gd" type="Script" id=2]
 
 [node name="ControllerRequester" type="Node"]
 
@@ -14,7 +14,7 @@ wait_time = 0.01
 one_shot = false
 autostart = true
 
-[node name="AnglesRequester" type="HTTPRequest" parent="." index="1"]
+[node name="InfoRequester" type="HTTPRequest" parent="." index="1"]
 
 download_file = ""
 use_threads = true
@@ -24,6 +24,6 @@ script = ExtResource( 2 )
 
 [connection signal="timeout" from="RequestTimer" to="." method="_on_RequestTimer_timeout"]
 
-[connection signal="request_completed" from="AnglesRequester" to="." method="_on_AnglesRequester_request_completed"]
+[connection signal="request_completed" from="InfoRequester" to="." method="_on_InfoRequester_request_completed"]
 
 

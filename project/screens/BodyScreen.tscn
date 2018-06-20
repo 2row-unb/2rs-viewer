@@ -8,7 +8,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Skeleton" parent="Armature" index="0"]
 
-_sections_unfolded = [ "bones" ]
+_sections_unfolded = [ "bones", "bones/33" ]
 
 [node name="godot_battle_bot" parent="Armature/Skeleton" index="0"]
 

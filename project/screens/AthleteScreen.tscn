@@ -2,7 +2,7 @@
 
 [ext_resource path="res://screens/BodyScreen.tscn" type="PackedScene" id=1]
 
-[node name="AthleteScreen" type="Spatial"]
+[node name="AthleteScreen" type="Spatial" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.80832, 0 )
 _sections_unfolded = [ "Transform" ]
@@ -30,7 +30,7 @@ _sections_unfolded = [ "Transform" ]
 
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 3.36954, 27.9432, 13.6117 )
 layers = 1
-light_color = Color( 0.503906, 0.503906, 0.75, 1 )
+light_color = Color( 0.562119, 0.78125, 0.473022, 1 )
 light_energy = 1.0
 light_indirect_energy = 1.0
 light_negative = false
@@ -58,7 +58,7 @@ _sections_unfolded = [ "Light", "Transform" ]
 
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 20, 0, 0 )
 layers = 1
-light_color = Color( 0.754944, 0.754944, 0.847656, 1 )
+light_color = Color( 0.497108, 0.828125, 0.469055, 1 )
 light_energy = 1.0
 light_indirect_energy = 1.0
 light_negative = false
