@@ -5,7 +5,7 @@
 [ext_resource path="res://screens/AthleteScreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://dynamic_fonts/value_df.tres" type="DynamicFont" id=4]
 
-[node name="ViewerScreen" type="Container"]
+[node name="ViewerScreen" type="Container" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0

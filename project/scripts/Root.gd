@@ -22,6 +22,7 @@ func _process(delta):
 		if(current_state != data.state):
 			current_state = data.state
 			update_scene()
+			print("[INFO] Root: Successful response from the server. Updating Scene.")
 	else:
 		if(current_state != $ControllerRequester.WAITING):
 			current_state = $ControllerRequester.WAITING
