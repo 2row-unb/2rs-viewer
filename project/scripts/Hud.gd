@@ -7,6 +7,7 @@ onready var seconds = $MarginContainer/VerticalContainer/StatusContainer/RightCo
 onready var more = $MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer/DifficultyData/More
 onready var difficulty = $MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer/DifficultyData/Difficulty
 onready var less = $MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer/DifficultyData/Less
+onready var ideal_camera = $MarginContainer/VerticalContainer/MotionContainer/IdealContainer/Container/Viewport/Camera
 
 func _ready():
 	print("[INFO] Hud: ready")

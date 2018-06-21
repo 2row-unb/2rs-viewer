@@ -19,6 +19,7 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="ServerRequester" type="Node" parent="." index="0"]
 
+editor/display_folded = true
 script = ExtResource( 2 )
 
 [node name="RequestTimer" type="Timer" parent="ServerRequester" index="0"]
@@ -319,7 +320,7 @@ shadow_atlas_quad_3 = 4
 
 [node name="Camera" type="Camera" parent="Hud/MarginContainer/VerticalContainer/MotionContainer/AthleteContainer/Container/Viewport" index="0"]
 
-transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 40, 5, -20 )
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 38, 10, -18 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -442,7 +443,7 @@ shadow_atlas_quad_3 = 4
 
 [node name="Camera" type="Camera" parent="Hud/MarginContainer/VerticalContainer/MotionContainer/IdealContainer/Container/Viewport" index="0"]
 
-transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -20, 5, 40 )
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -22, 10, 42 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
