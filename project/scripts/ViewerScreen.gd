@@ -1,14 +1,6 @@
 extends Container
 
-onready var power = $MarginContainer/VerticalContainer/StatusContainer/LeftContainer/PowerContainer/Power
-onready var speed = $MarginContainer/VerticalContainer/StatusContainer/LeftContainer/SpeedContainer/Speed
-onready var minutes = $MarginContainer/VerticalContainer/StatusContainer/RightContainer/TimerContainer/TimerData/Minutes
-onready var seconds = $MarginContainer/VerticalContainer/StatusContainer/RightContainer/TimerContainer/TimerData/Seconds
-onready var more = $MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer/DifficultyData/More
-onready var difficulty = $MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer/DifficultyData/Difficulty
-onready var less = $MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer/DifficultyData/Less
 onready var athlete_skeleton = $MarginContainer/VerticalContainer/MotionContainer/AthleteContainer/Container/Viewport/Athlete/BodyScreen/Armature/Skeleton
-onready var ideal_skeleton = $MarginContainer/VerticalContainer/MotionContainer/IdealContainer/Container/Viewport/Ideal/BodyScreen/Armature/Skeleton
 
 const ARM_UL = 3
 const ARM_UR = 16
@@ -27,70 +19,21 @@ const CHEST = 1
 
 const ROOT = 0
 
-const IDEAL_TOTAL_STEPS = 14
-
 const X = Vector3(1.0, 0.0, 0.0)
 const Y = Vector3(0.0, 1.0, 0.0)
 const Z = Vector3(0.0, 0.0, 1.0)
 
 var base_transforms = {}
-var ideal_root_variation = [0.0, 0.0, 0.0]
 var athlete_root_variation = [0.0, 0.0, 0.0]
-
-var ideal_step = 0
-var increasing = true
 
 func _ready():
 	print("[INFO] ViewerScreen: ready")
 	set_default_root()
 	set_default_pose(athlete_skeleton)
-	set_default_pose(ideal_skeleton)
 	pass
 
 func update_data(data):
-	power.text = str(data.power)
-	speed.text = str(data.speed)
-
-	minutes.text = "%02d" % data.timer_minutes
-	seconds.text = "%02d" % data.timer_seconds
-
-	difficulty.text = str(data.difficulty)
-
-	if data.difficulty < 1:
-		less.text = ""
-		more.text = ">"
-	elif data.difficulty < 3:
-		more.text = "<"
-		more.text = ">"
-	else:
-		less.text = "<"
-		more.text = ""
-
 	update_body(athlete_skeleton, data.athlete)
-
-	#update_ideal_by_ratio()
-
-	if increasing:
-		ideal_step += 1
-	else:
-		ideal_step -= 1
-
-	if ideal_step == -1:
-		increasing = true
-		ideal_step = 1
-	elif ideal_step == IDEAL_TOTAL_STEPS:
-		increasing = false
-		ideal_step = IDEAL_TOTAL_STEPS-2
-	pass
-
-func update_ideal_by_ratio():
-	rotate(ideal_skeleton, FOOT_L, [(PI*ideal_step)/35, 0.0, 0.0], false)
-	rotate(ideal_skeleton, FOOT_R, [(PI*ideal_step)/35, 0.0, 0.0], true)
-	rotate(ideal_skeleton, LEG_UL, [0.0, (-PI*ideal_step)/40, 0.0], false)
-	rotate(ideal_skeleton, LEG_LL, [0.0, (PI*ideal_step)/16, 0.0], false)
-	rotate(ideal_skeleton, LEG_UR, [0.0, (-PI*ideal_step)/40, 0.0], true)
-	rotate(ideal_skeleton, LEG_LR, [0.0, (PI*ideal_step)/16, 0.0], true)
-	# translate(ideal_skeleton, ROOT, [0.0, 0.39*ideal_step, -0.1*ideal_step])
 	pass
 
 func update_body(skeleton, bones):
@@ -208,7 +151,5 @@ func set_default_root():
 	base_transforms[ROOT] = transform
 	transform = transform.rotated(X, -PI/4)
 	athlete_root_variation = [-PI/4, 0.0, 0.0]
-	ideal_root_variation = [-PI/4, 0.0, 0.0]
 	athlete_skeleton.set_bone_pose(ROOT, transform)
-	ideal_skeleton.set_bone_pose(ROOT, transform)
 	pass

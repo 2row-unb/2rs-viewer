@@ -5,7 +5,7 @@
 [ext_resource path="res://screens/AthleteScreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://dynamic_fonts/value_df.tres" type="DynamicFont" id=4]
 
-[node name="ViewerScreen" type="Container" index="0"]
+[node name="ViewerScreen" type="Container"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -118,7 +118,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 6.0
-margin_right = 487.0
+margin_right = 972.0
 margin_bottom = 374.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -136,7 +136,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 481.0
+margin_right = 966.0
 margin_bottom = 46.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -161,7 +161,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 50.0
-margin_right = 481.0
+margin_right = 966.0
 margin_bottom = 374.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -177,7 +177,7 @@ _sections_unfolded = [ "Size Flags" ]
 [node name="Viewport" type="Viewport" parent="MarginContainer/VerticalContainer/MotionContainer/AthleteContainer/Container" index="0"]
 
 arvr = false
-size = Vector2( 481, 324 )
+size = Vector2( 966, 324 )
 own_world = true
 world = null
 transparent_bg = false
@@ -209,8 +209,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 491.0
-margin_right = 493.0
+margin_left = 976.0
+margin_right = 978.0
 margin_bottom = 374.0
 rect_min_size = Vector2( 2, 0 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -222,97 +222,7 @@ size_flags_vertical = 3
 color = Color( 0.6, 0.6, 0.6, 1 )
 _sections_unfolded = [ "Rect", "Size Flags" ]
 
-[node name="IdealContainer" type="VBoxContainer" parent="MarginContainer/VerticalContainer/MotionContainer" index="3"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 497.0
-margin_right = 978.0
-margin_bottom = 374.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 59.0
-alignment = 1
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="IdealLabel" type="Label" parent="MarginContainer/VerticalContainer/MotionContainer/IdealContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 481.0
-margin_bottom = 46.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 2 )
-text = "Performance Ideal"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Size Flags", "custom_fonts" ]
-
-[node name="Container" type="ViewportContainer" parent="MarginContainer/VerticalContainer/MotionContainer/IdealContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 50.0
-margin_right = 481.0
-margin_bottom = 374.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 7.0
-stretch = true
-stretch_shrink = 1
-
-[node name="Viewport" type="Viewport" parent="MarginContainer/VerticalContainer/MotionContainer/IdealContainer/Container" index="0"]
-
-arvr = false
-size = Vector2( 481, 324 )
-own_world = true
-world = null
-transparent_bg = false
-msaa = 0
-hdr = true
-disable_3d = false
-usage = 3
-debug_draw = 0
-render_target_v_flip = false
-render_target_clear_mode = 0
-render_target_update_mode = 3
-audio_listener_enable_2d = false
-audio_listener_enable_3d = false
-physics_object_picking = false
-gui_disable_input = false
-gui_snap_controls_to_pixels = true
-shadow_atlas_size = 0
-shadow_atlas_quad_0 = 0
-shadow_atlas_quad_1 = 0
-shadow_atlas_quad_2 = 0
-shadow_atlas_quad_3 = 0
-_sections_unfolded = [ "Rendering", "Shadow Atlas" ]
-
-[node name="Ideal" parent="MarginContainer/VerticalContainer/MotionContainer/IdealContainer/Container/Viewport" index="0" instance=ExtResource( 3 )]
-
-[node name="RightBorder" type="ColorRect" parent="MarginContainer/VerticalContainer/MotionContainer" index="4"]
+[node name="RightBorder" type="ColorRect" parent="MarginContainer/VerticalContainer/MotionContainer" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
