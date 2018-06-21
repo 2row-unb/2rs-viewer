@@ -20,5 +20,4 @@ settings/fps/force_fps=10
 
 [rendering]
 
-quality/intended_usage/framebuffer_allocation=0
 environment/default_clear_color=Color( 0.156863, 0.156863, 0.156863, 1 )

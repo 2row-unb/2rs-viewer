@@ -5,5 +5,5 @@ func _ready():
 	pass
 
 func _process(delta):
-	$ViewerScreen.update_data($ControllerRequester.get_current_data())
+	$Athlete.update_data($ControllerRequester.get_current_data())
 	pass

@@ -1,6 +1,6 @@
-extends Container
+extends Spatial
 
-onready var athlete_skeleton = $MarginContainer/VerticalContainer/MotionContainer/AthleteContainer/Container/Viewport/Athlete/BodyScreen/Armature/Skeleton
+onready var athlete_skeleton = $Armature/Skeleton
 
 const ARM_UL = 3
 const ARM_UR = 16
@@ -28,7 +28,6 @@ var athlete_root_variation = [0.0, 0.0, 0.0]
 
 func _ready():
 	print("[INFO] ViewerScreen: ready")
-	set_default_root()
 	set_default_pose(athlete_skeleton)
 	pass
 
@@ -38,7 +37,6 @@ func update_data(data):
 
 func update_body(skeleton, bones):
 	update_legs(skeleton, bones.legs)
-	update_root(skeleton, bones.root)
 	pass
 
 func update_legs(skeleton, legs):
@@ -46,10 +44,6 @@ func update_legs(skeleton, legs):
 	rotate(skeleton, LEG_LL, legs.ll, false)
 	rotate(skeleton, LEG_UR, legs.ur, true)
 	rotate(skeleton, LEG_LR, legs.lr, true)
-	pass
-
-func update_root(skeleton, root):
-	translate(skeleton, ROOT, root)
 	pass
 
 # Transforms
@@ -76,14 +70,6 @@ func translate(skeleton, bone, delta):
 # Default
 
 func set_default_pose(skeleton):
-	set_default_head(skeleton)
-
-	set_default_left_upper_arm(skeleton)
-	set_default_left_hand(skeleton)
-
-	set_default_right_upper_arm(skeleton)
-	set_default_right_hand(skeleton)
-
 	set_default_left_upper_leg(skeleton)
 	base_transforms[LEG_LL] = athlete_skeleton.get_bone_pose(LEG_LL)
 	base_transforms[FOOT_L] = athlete_skeleton.get_bone_pose(FOOT_L)
@@ -93,63 +79,16 @@ func set_default_pose(skeleton):
 	base_transforms[FOOT_R] = athlete_skeleton.get_bone_pose(FOOT_R)
 	pass
 
-func set_default_left_upper_arm(skeleton):
-	var transform = skeleton.get_bone_pose(ARM_UL)
-	transform = transform.rotated(Z, -PI/3)
-	transform = transform.rotated(Y, -PI/2)
-	skeleton.set_bone_pose(ARM_UL, transform)
-	base_transforms[ARM_UL] = transform
-	pass
-
-func set_default_right_upper_arm(skeleton):
-	var transform = skeleton.get_bone_pose(ARM_UR)
-	transform = transform.rotated(Z, PI/3)
-	transform = transform.rotated(Y, -PI/2)
-	skeleton.set_bone_pose(ARM_UR, transform)
-	base_transforms[ARM_UR] = transform
-	pass
-
 func set_default_left_upper_leg(skeleton):
 	var transform = skeleton.get_bone_pose(LEG_UL)
-	transform = transform.rotated(Y, -PI/4)
+	transform = transform.rotated(Y, -PI/2)
 	skeleton.set_bone_pose(LEG_UL, transform)
 	base_transforms[LEG_UL] = transform
 	pass
 
 func set_default_right_upper_leg(skeleton):
 	var transform = skeleton.get_bone_pose(LEG_UR)
-	transform = transform.rotated(Y, -PI/4)
+	transform = transform.rotated(Y, -PI/2)
 	skeleton.set_bone_pose(LEG_UR, transform)
 	base_transforms[LEG_UR] = transform
-	pass
-
-func set_default_left_hand(skeleton):
-	for id in range(8, 16):
-		var transform = skeleton.get_bone_pose(id)
-		transform = transform.rotated(X, -PI/3)
-		skeleton.set_bone_pose(id, transform)
-		base_transforms[id] = transform
-	pass
-
-func set_default_right_hand(skeleton):
-	for id in range(21, 29):
-		var transform = skeleton.get_bone_pose(id)
-		transform = transform.rotated(X, PI/3)
-		skeleton.set_bone_pose(id, transform)
-		base_transforms[id] = transform
-	pass
-
-func set_default_head(skeleton):
-	var transform = skeleton.get_bone_pose(HEAD)
-	transform = transform.rotated(X, -PI/4)
-	skeleton.set_bone_pose(HEAD, transform)
-	base_transforms[HEAD] = transform
-	pass
-
-func set_default_root():
-	var transform = athlete_skeleton.get_bone_pose(ROOT)
-	base_transforms[ROOT] = transform
-	transform = transform.rotated(X, -PI/4)
-	athlete_root_variation = [-PI/4, 0.0, 0.0]
-	athlete_skeleton.set_bone_pose(ROOT, transform)
 	pass

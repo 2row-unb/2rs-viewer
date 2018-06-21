@@ -28,8 +28,8 @@ class Dataset:
 	var errors = Array()
 
 # const URL = "http://localhost:5000/"
-# const URL = "http://192.168.25.86:5000/"
-const URL = "http://localhost:20000/"
+const URL = "http://192.168.25.86:5000/"
+# const URL = "http://localhost:20000/"
 
 var data = Dataset.new()
 
