@@ -44,11 +44,9 @@ func extract_info(result):
 			data.timer_minutes = int(result.timer) / 60
 			data.timer_seconds = int(result.timer) % 60
 		elif result.state == data.WAITING:
-			pass
+			data.state = data.WAITING
 		else:
 			data.state = data.NO_RESPONSE
-			for error in result.errors:
-				data.errors.push_back(error)
 	else:
 		data.state = data.NO_RESPONSE
 	pass
