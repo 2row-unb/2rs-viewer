@@ -1,16 +1,17 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/Root.gd" type="Script" id=1]
 [ext_resource path="res://scripts/ServerRequester.gd" type="Script" id=2]
 [ext_resource path="res://scripts/InfoEndpoint.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Bodies.gd" type="Script" id=4]
-[ext_resource path="res://imports/godot_battle_bot.dae" type="PackedScene" id=5]
+[ext_resource path="res://imports/athlete.dae" type="PackedScene" id=5]
 [ext_resource path="res://imports/battle_bot_colors.material" type="Material" id=6]
 [ext_resource path="res://imports/battle_bot_emission.material" type="Material" id=7]
-[ext_resource path="res://environments/Main.tres" type="Environment" id=8]
-[ext_resource path="res://scripts/Hud.gd" type="Script" id=9]
-[ext_resource path="res://dynamic_fonts/label_df.tres" type="DynamicFont" id=10]
-[ext_resource path="res://dynamic_fonts/value_df.tres" type="DynamicFont" id=11]
+[ext_resource path="res://imports/ideal.dae" type="PackedScene" id=8]
+[ext_resource path="res://environments/Main.tres" type="Environment" id=9]
+[ext_resource path="res://scripts/Hud.gd" type="Script" id=10]
+[ext_resource path="res://dynamic_fonts/label_df.tres" type="DynamicFont" id=11]
+[ext_resource path="res://dynamic_fonts/value_df.tres" type="DynamicFont" id=12]
 
 [node name="Root" type="Spatial" index="0"]
 
@@ -50,13 +51,16 @@ _sections_unfolded = [ "Transform" ]
 
 material/0 = ExtResource( 6 )
 material/1 = ExtResource( 7 )
-_sections_unfolded = [ "material" ]
+_sections_unfolded = [ "Geometry", "material" ]
 
-[node name="Ideal" parent="Bodies" index="1" instance=ExtResource( 5 )]
+[node name="Ideal" parent="Bodies" index="1" instance=ExtResource( 8 )]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 30 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Skeleton" parent="Bodies/Ideal/Armature" index="0"]
+
+_sections_unfolded = [ "bones" ]
 
 [node name="godot_battle_bot" parent="Bodies/Ideal/Armature/Skeleton" index="0"]
 
@@ -64,9 +68,14 @@ material/0 = ExtResource( 6 )
 material/1 = ExtResource( 7 )
 _sections_unfolded = [ "material" ]
 
+[node name="AnimationPlayer" parent="Bodies/Ideal" index="1"]
+
+autoplay = "default"
+_sections_unfolded = [ "Playback Options" ]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
 
-environment = ExtResource( 8 )
+environment = ExtResource( 9 )
 
 [node name="AthleteLight" type="DirectionalLight" parent="." index="3"]
 
@@ -126,6 +135,7 @@ _sections_unfolded = [ "Light", "Transform" ]
 
 [node name="Hud" type="Control" parent="." index="5"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -136,7 +146,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "custom_constants" ]
 
 [node name="MarginContainer" type="MarginContainer" parent="Hud" index="0"]
@@ -262,7 +272,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
 text = "Performance Atual"
 align = 1
 valign = 1
@@ -387,7 +397,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
 text = "Performance Ideal"
 align = 1
 valign = 1
@@ -582,7 +592,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
 text = "Potência"
 align = 1
 percent_visible = 1.0
@@ -605,7 +615,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 12 )
 text = "0"
 align = 1
 valign = 1
@@ -629,7 +639,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
 text = "Watts"
 align = 1
 valign = 2
@@ -689,7 +699,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
 text = "Velocidade"
 align = 1
 percent_visible = 1.0
@@ -712,7 +722,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 12 )
 text = "0"
 align = 1
 valign = 1
@@ -736,7 +746,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
 text = "remadas/min"
 align = 1
 valign = 2
@@ -814,7 +824,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
 text = "Tempo"
 align = 1
 percent_visible = 1.0
@@ -856,7 +866,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 12 )
 text = "00"
 align = 2
 valign = 1
@@ -880,7 +890,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 12 )
 text = ":"
 align = 1
 valign = 1
@@ -904,7 +914,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 12 )
 text = "00"
 valign = 1
 percent_visible = 1.0
@@ -927,7 +937,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
 text = "min:s"
 align = 1
 valign = 2
@@ -987,7 +997,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
 text = "Dificuldade"
 align = 1
 percent_visible = 1.0
@@ -1028,7 +1038,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 12 )
 text = "<"
 align = 1
 valign = 1
@@ -1052,7 +1062,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 12 )
 text = "0"
 align = 1
 valign = 1
@@ -1076,7 +1086,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 12 )
 text = ">"
 align = 1
 valign = 1
@@ -1100,7 +1110,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
@@ -1148,6 +1158,8 @@ _sections_unfolded = [ "Rect", "Size Flags" ]
 [connection signal="timeout" from="ServerRequester/RequestTimer" to="ServerRequester" method="_on_RequestTimer_timeout"]
 
 [connection signal="request_completed" from="ServerRequester/InfoEndpoint" to="ServerRequester" method="_on_InfoEndpoint_request_completed"]
+
+[connection signal="animation_finished" from="Bodies/Ideal/AnimationPlayer" to="Bodies" method="_on_Ideal_animation_finished"]
 
 
 [editable path="Bodies/Athlete"]

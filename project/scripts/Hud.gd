@@ -26,7 +26,7 @@ func update_data(data):
 		less.text = ""
 		more.text = ">"
 	elif data.difficulty < 3:
-		more.text = "<"
+		less.text = "<"
 		more.text = ">"
 	else:
 		less.text = "<"
