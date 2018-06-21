@@ -3,17 +3,16 @@ extends Node
 class Dataset:
 	var ul = [0.0, 0.0, 0.0]
 	var ll = [0.0, 0.0, 0.0]
-	var state = 0
+	var state = 2
 	var power = 0
 	var speed = 0
 	var timer_minutes = 0
 	var timer_seconds = 0
 	var difficulty = 0
 	var errors = Array()
-
-const NO_RESPONSE = 0
-const WAITING = 1
-const IN_ACTIVITY = 2
+	const NO_RESPONSE = 0
+	const WAITING = 1
+	const IN_ACTIVITY = 2
 
 # const URL = "http://localhost:5000/"
 const URL = "http://192.168.25.86:5000/"
@@ -35,7 +34,7 @@ func clear_errors():
 
 func extract_info(result):
 	if result.has("state"):
-		if result.state == IN_ACTIVITY:
+		if result.state == data.IN_ACTIVITY:
 			data.ul = result.ul
 			data.ll = result.ll
 			data.difficulty = result.difficulty
@@ -44,14 +43,14 @@ func extract_info(result):
 			data.state = result.state
 			data.timer_minutes = int(result.timer) / 60
 			data.timer_seconds = int(result.timer) % 60
-		elif result.state == WAITING:
+		elif result.state == data.WAITING:
 			pass
 		else:
-			data.state = NO_RESPONSE
+			data.state = data.NO_RESPONSE
 			for error in result.errors:
 				data.errors.push_back(error)
 	else:
-		data.state = NO_RESPONSE
+		data.state = data.NO_RESPONSE
 	pass
 
 func _on_RequestTimer_timeout():

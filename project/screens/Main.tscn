@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/Root.gd" type="Script" id=1]
 [ext_resource path="res://scripts/ServerRequester.gd" type="Script" id=2]
@@ -10,8 +10,9 @@
 [ext_resource path="res://imports/ideal.dae" type="PackedScene" id=8]
 [ext_resource path="res://environments/Main.tres" type="Environment" id=9]
 [ext_resource path="res://scripts/Hud.gd" type="Script" id=10]
-[ext_resource path="res://dynamic_fonts/label_df.tres" type="DynamicFont" id=11]
-[ext_resource path="res://dynamic_fonts/value_df.tres" type="DynamicFont" id=12]
+[ext_resource path="res://resources/logowhite.png" type="Texture" id=11]
+[ext_resource path="res://dynamic_fonts/label_df.tres" type="DynamicFont" id=12]
+[ext_resource path="res://dynamic_fonts/value_df.tres" type="DynamicFont" id=13]
 
 [node name="Root" type="Spatial" index="0"]
 
@@ -44,6 +45,7 @@ script = ExtResource( 4 )
 
 [node name="Athlete" parent="Bodies" index="0" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -30 )
 _sections_unfolded = [ "Transform" ]
 
@@ -55,6 +57,7 @@ _sections_unfolded = [ "Geometry", "material" ]
 
 [node name="Ideal" parent="Bodies" index="1" instance=ExtResource( 8 )]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 30 )
 _sections_unfolded = [ "Transform" ]
 
@@ -135,7 +138,6 @@ _sections_unfolded = [ "Light", "Transform" ]
 
 [node name="Hud" type="Control" parent="." index="5"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -258,22 +260,44 @@ size_flags_stretch_ratio = 59.0
 alignment = 1
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="AthleteLabel" type="Label" parent="Hud/MarginContainer/VerticalContainer/MotionContainer/AthleteContainer" index="0"]
+[node name="Logo" type="TextureRect" parent="Hud/MarginContainer/VerticalContainer/MotionContainer/AthleteContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 481.0
-margin_bottom = 46.0
+margin_bottom = 374.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.0
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="AthleteLabel" type="Label" parent="Hud/MarginContainer/VerticalContainer/MotionContainer/AthleteContainer" index="1"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 622.0
+margin_right = 841.0
+margin_bottom = 711.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
-text = "Performance Atual"
+custom_fonts/font = ExtResource( 12 )
+text = "Bem-vindo ao 2Row"
 align = 1
 valign = 1
 autowrap = true
@@ -282,15 +306,17 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Size Flags", "custom_fonts" ]
 
-[node name="Container" type="ViewportContainer" parent="Hud/MarginContainer/VerticalContainer/MotionContainer/AthleteContainer" index="1"]
+[node name="Container" type="ViewportContainer" parent="Hud/MarginContainer/VerticalContainer/MotionContainer/AthleteContainer" index="2"]
 
+editor/display_folded = true
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 50.0
-margin_right = 481.0
-margin_bottom = 374.0
+margin_right = 841.0
+margin_bottom = 378.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -305,7 +331,7 @@ _sections_unfolded = [ "Size Flags" ]
 [node name="Viewport" type="Viewport" parent="Hud/MarginContainer/VerticalContainer/MotionContainer/AthleteContainer/Container" index="0"]
 
 arvr = false
-size = Vector2( 481, 324 )
+size = Vector2( 841, 328 )
 own_world = false
 world = null
 transparent_bg = false
@@ -316,7 +342,7 @@ usage = 2
 debug_draw = 0
 render_target_v_flip = false
 render_target_clear_mode = 0
-render_target_update_mode = 3
+render_target_update_mode = 0
 audio_listener_enable_2d = false
 audio_listener_enable_3d = false
 physics_object_picking = false
@@ -397,8 +423,8 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
-text = "Performance Ideal"
+custom_fonts/font = ExtResource( 12 )
+text = "Diga OLÁ ao Rowbô!"
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -408,6 +434,7 @@ _sections_unfolded = [ "Rect", "Size Flags", "custom_fonts" ]
 
 [node name="Container" type="ViewportContainer" parent="Hud/MarginContainer/VerticalContainer/MotionContainer/IdealContainer" index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -508,6 +535,640 @@ _sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="StatusContainer" type="HBoxContainer" parent="Hud/MarginContainer/VerticalContainer" index="3"]
 
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 532.0
+margin_right = 1705.0
+margin_bottom = 799.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+_sections_unfolded = [ "custom_constants" ]
+
+[node name="LeftBorder" type="ColorRect" parent="Hud/MarginContainer/VerticalContainer/StatusContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 2.0
+margin_bottom = 267.0
+rect_min_size = Vector2( 2, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+color = Color( 0.6, 0.6, 0.6, 1 )
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="LeftContainer" type="HBoxContainer" parent="Hud/MarginContainer/VerticalContainer/StatusContainer" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 6.0
+margin_right = 847.0
+margin_bottom = 267.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="PowerContainer" type="VBoxContainer" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 415.0
+margin_bottom = 267.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+alignment = 1
+_sections_unfolded = [ "Size Flags", "custom_constants" ]
+
+[node name="PowerLabel" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer/PowerContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 415.0
+margin_bottom = 89.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 12 )
+text = "Potência"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="Power" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer/PowerContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 89.0
+margin_right = 415.0
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 13 )
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_fonts" ]
+
+[node name="PowerSuffix" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer/PowerContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 178.0
+margin_right = 415.0
+margin_bottom = 267.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 12 )
+text = "Watts"
+align = 1
+valign = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="CenterLeftBorder" type="ColorRect" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 419.0
+margin_right = 421.0
+margin_bottom = 267.0
+rect_min_size = Vector2( 2, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+color = Color( 0.6, 0.6, 0.6, 1 )
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="SpeedContainer" type="VBoxContainer" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 425.0
+margin_right = 841.0
+margin_bottom = 267.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="SpeedLabel" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer/SpeedContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 416.0
+margin_bottom = 86.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 12 )
+text = "Velocidade"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="Speed" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer/SpeedContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 90.0
+margin_right = 416.0
+margin_bottom = 176.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 13 )
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_fonts" ]
+
+[node name="SpeedSuffix" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer/SpeedContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 180.0
+margin_right = 416.0
+margin_bottom = 267.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 12 )
+text = "remadas/min"
+align = 1
+valign = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="CenterBorder" type="ColorRect" parent="Hud/MarginContainer/VerticalContainer/StatusContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 851.0
+margin_right = 853.0
+margin_bottom = 267.0
+rect_min_size = Vector2( 2, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+color = Color( 0.6, 0.6, 0.6, 1 )
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="RightContainer" type="HBoxContainer" parent="Hud/MarginContainer/VerticalContainer/StatusContainer" index="3"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 857.0
+margin_right = 1698.0
+margin_bottom = 267.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="TimerContainer" type="VBoxContainer" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 415.0
+margin_bottom = 267.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="TimerLabel" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/TimerContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 415.0
+margin_bottom = 35.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 12 )
+text = "Tempo"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="TimerData" type="HBoxContainer" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/TimerContainer" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 39.0
+margin_right = 415.0
+margin_bottom = 228.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.0
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="Minutes" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/TimerContainer/TimerData" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 191.0
+margin_bottom = 189.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 13 )
+text = "00"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_fonts" ]
+
+[node name="And" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/TimerContainer/TimerData" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 195.0
+margin_right = 219.0
+margin_bottom = 189.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 13 )
+text = ":"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="Seconds" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/TimerContainer/TimerData" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 223.0
+margin_right = 415.0
+margin_bottom = 189.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 13 )
+text = "00"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_colors", "custom_fonts" ]
+
+[node name="SpeedSuffix2" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/TimerContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 232.0
+margin_right = 415.0
+margin_bottom = 267.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 12 )
+text = "min:s"
+align = 1
+valign = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="CenterRightBorder" type="ColorRect" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 419.0
+margin_right = 421.0
+margin_bottom = 267.0
+rect_min_size = Vector2( 2, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+color = Color( 0.6, 0.6, 0.6, 1 )
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="DifficultyContainer" type="VBoxContainer" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 425.0
+margin_right = 841.0
+margin_bottom = 267.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="DifficultyLabel" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 416.0
+margin_bottom = 35.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 12 )
+text = "Dificuldade"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="DifficultyData" type="HBoxContainer" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 39.0
+margin_right = 416.0
+margin_bottom = 228.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.0
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="Less" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer/DifficultyData" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 136.0
+margin_bottom = 189.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 13 )
+text = "<"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_fonts" ]
+
+[node name="Difficulty" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer/DifficultyData" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 140.0
+margin_right = 276.0
+margin_bottom = 189.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 13 )
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="More" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer/DifficultyData" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 280.0
+margin_right = 416.0
+margin_bottom = 189.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 13 )
+text = ">"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_colors", "custom_fonts" ]
+
+[node name="EmptySuffix" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 232.0
+margin_right = 416.0
+margin_bottom = 267.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 12 )
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="RightBorder" type="ColorRect" parent="Hud/MarginContainer/VerticalContainer/StatusContainer" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1702.0
+margin_right = 1704.0
+margin_bottom = 267.0
+rect_min_size = Vector2( 2, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+color = Color( 0.6, 0.6, 0.6, 1 )
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="MessageContainer" type="HBoxContainer" parent="Hud/MarginContainer/VerticalContainer" index="4"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -521,10 +1182,10 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-alignment = 1
+alignment = 0
 _sections_unfolded = [ "custom_constants" ]
 
-[node name="LeftBorder" type="ColorRect" parent="Hud/MarginContainer/VerticalContainer/StatusContainer" index="0"]
+[node name="LeftBorder" type="ColorRect" parent="Hud/MarginContainer/VerticalContainer/MessageContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -542,582 +1203,32 @@ size_flags_vertical = 3
 color = Color( 0.6, 0.6, 0.6, 1 )
 _sections_unfolded = [ "Rect", "Size Flags" ]
 
-[node name="LeftContainer" type="HBoxContainer" parent="Hud/MarginContainer/VerticalContainer/StatusContainer" index="1"]
+[node name="Message" type="Label" parent="Hud/MarginContainer/VerticalContainer/MessageContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 6.0
-margin_right = 487.0
-margin_bottom = 187.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="PowerContainer" type="VBoxContainer" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 235.0
-margin_bottom = 187.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 0
-alignment = 1
-_sections_unfolded = [ "Size Flags", "custom_constants" ]
-
-[node name="PowerLabel" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer/PowerContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 235.0
-margin_bottom = 62.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
-text = "Potência"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="Power" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer/PowerContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 62.0
-margin_right = 235.0
-margin_bottom = 124.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 12 )
-text = "0"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Size Flags", "custom_fonts" ]
-
-[node name="PowerSuffix" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer/PowerContainer" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 124.0
-margin_right = 235.0
-margin_bottom = 187.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
-text = "Watts"
-align = 1
-valign = 2
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="CenterLeftBorder" type="ColorRect" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 239.0
-margin_right = 241.0
-margin_bottom = 187.0
-rect_min_size = Vector2( 2, 0 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 0
-size_flags_vertical = 3
-color = Color( 0.6, 0.6, 0.6, 1 )
-_sections_unfolded = [ "Rect", "Size Flags" ]
-
-[node name="SpeedContainer" type="VBoxContainer" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 245.0
-margin_right = 481.0
-margin_bottom = 187.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 1
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="SpeedLabel" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer/SpeedContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 236.0
-margin_bottom = 59.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
-text = "Velocidade"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="Speed" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer/SpeedContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 63.0
-margin_right = 236.0
-margin_bottom = 123.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 12 )
-text = "0"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Size Flags", "custom_fonts" ]
-
-[node name="SpeedSuffix" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/LeftContainer/SpeedContainer" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 127.0
-margin_right = 236.0
-margin_bottom = 187.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
-text = "remadas/min"
-align = 1
-valign = 2
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="CenterBorder" type="ColorRect" parent="Hud/MarginContainer/VerticalContainer/StatusContainer" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 491.0
-margin_right = 493.0
-margin_bottom = 187.0
-rect_min_size = Vector2( 2, 0 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 0
-size_flags_vertical = 3
-color = Color( 0.6, 0.6, 0.6, 1 )
-_sections_unfolded = [ "Rect", "Size Flags" ]
-
-[node name="RightContainer" type="HBoxContainer" parent="Hud/MarginContainer/VerticalContainer/StatusContainer" index="3"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 497.0
 margin_right = 978.0
 margin_bottom = 187.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="TimerContainer" type="VBoxContainer" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer" index="0"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 235.0
-margin_bottom = 187.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 1
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="TimerLabel" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/TimerContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 235.0
-margin_bottom = 35.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
-text = "Tempo"
+custom_fonts/font = ExtResource( 13 )
+text = "Aguardando Inicialização do Sistema"
 align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="TimerData" type="HBoxContainer" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/TimerContainer" index="1"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 39.0
-margin_right = 235.0
-margin_bottom = 148.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 7.0
-alignment = 0
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="Minutes" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/TimerContainer/TimerData" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 101.0
-margin_bottom = 109.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 12 )
-text = "00"
-align = 2
 valign = 1
+autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Size Flags", "custom_fonts" ]
 
-[node name="And" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/TimerContainer/TimerData" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 105.0
-margin_right = 129.0
-margin_bottom = 109.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 12 )
-text = ":"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="Seconds" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/TimerContainer/TimerData" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 133.0
-margin_right = 235.0
-margin_bottom = 109.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 12 )
-text = "00"
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_colors", "custom_fonts" ]
-
-[node name="SpeedSuffix2" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/TimerContainer" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 152.0
-margin_right = 235.0
-margin_bottom = 187.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
-text = "min:s"
-align = 1
-valign = 2
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="CenterRightBorder" type="ColorRect" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 239.0
-margin_right = 241.0
-margin_bottom = 187.0
-rect_min_size = Vector2( 2, 0 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 0
-size_flags_vertical = 3
-color = Color( 0.6, 0.6, 0.6, 1 )
-_sections_unfolded = [ "Rect", "Size Flags" ]
-
-[node name="DifficultyContainer" type="VBoxContainer" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 245.0
-margin_right = 481.0
-margin_bottom = 187.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 1
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="DifficultyLabel" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 236.0
-margin_bottom = 35.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
-text = "Dificuldade"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="DifficultyData" type="HBoxContainer" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 39.0
-margin_right = 236.0
-margin_bottom = 148.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 7.0
-alignment = 0
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="Less" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer/DifficultyData" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 76.0
-margin_bottom = 109.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 12 )
-text = "<"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Size Flags", "custom_fonts" ]
-
-[node name="Difficulty" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer/DifficultyData" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 80.0
-margin_right = 156.0
-margin_bottom = 109.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 12 )
-text = "0"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="More" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer/DifficultyData" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 160.0
-margin_right = 236.0
-margin_bottom = 109.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 12 )
-text = ">"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_colors", "custom_fonts" ]
-
-[node name="EmptySuffix" type="Label" parent="Hud/MarginContainer/VerticalContainer/StatusContainer/RightContainer/DifficultyContainer" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 152.0
-margin_right = 236.0
-margin_bottom = 187.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 11 )
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="RightBorder" type="ColorRect" parent="Hud/MarginContainer/VerticalContainer/StatusContainer" index="4"]
+[node name="RightBorder" type="ColorRect" parent="Hud/MarginContainer/VerticalContainer/MessageContainer" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -1136,7 +1247,7 @@ size_flags_vertical = 3
 color = Color( 0.6, 0.6, 0.6, 1 )
 _sections_unfolded = [ "Rect", "Size Flags" ]
 
-[node name="BottomBorder" type="ColorRect" parent="Hud/MarginContainer/VerticalContainer" index="4"]
+[node name="BottomBorder" type="ColorRect" parent="Hud/MarginContainer/VerticalContainer" index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
