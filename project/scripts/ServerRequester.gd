@@ -3,7 +3,7 @@ extends Node
 class Dataset:
 	var ul = [0.0, 0.0, 0.0]
 	var ll = [0.0, 0.0, 0.0]
-	var state = 2
+	var state = 0
 	var power = 0
 	var speed = 0
 	var timer_minutes = 0
