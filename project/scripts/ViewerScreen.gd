@@ -41,9 +41,6 @@ func update_body(skeleton, bones):
 
 func update_legs(skeleton, legs):
 	rotate(skeleton, LEG_UL, legs.ul, false)
-	rotate(skeleton, LEG_LL, legs.ll, false)
-	rotate(skeleton, LEG_UR, legs.ur, true)
-	rotate(skeleton, LEG_LR, legs.lr, true)
 	pass
 
 # Transforms
@@ -73,10 +70,6 @@ func set_default_pose(skeleton):
 	set_default_left_upper_leg(skeleton)
 	base_transforms[LEG_LL] = athlete_skeleton.get_bone_pose(LEG_LL)
 	base_transforms[FOOT_L] = athlete_skeleton.get_bone_pose(FOOT_L)
-
-	set_default_right_upper_leg(skeleton)
-	base_transforms[LEG_LR] = athlete_skeleton.get_bone_pose(LEG_LR)
-	base_transforms[FOOT_R] = athlete_skeleton.get_bone_pose(FOOT_R)
 	pass
 
 func set_default_left_upper_leg(skeleton):
