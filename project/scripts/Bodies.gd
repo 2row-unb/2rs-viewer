@@ -25,6 +25,8 @@ onready var ideal_animation = $Ideal/AnimationPlayer
 var speed_data = SpeedData.new()
 
 var current_state = -1
+var mini = 100
+var maxi = -100
 
 func _ready():
 	print("[INFO] Bodies: ready")
@@ -51,6 +53,13 @@ func update_ideal_animation(data):
 func update_athlete(data):
 	if data.state == data.IN_ACTIVITY:
 		var value = data.ul[0]
+		if value > maxi:
+			maxi = value
+		if value < mini:
+			mini = value
+		print("---")
+		print(mini)
+		print(maxi)
 		if value < -0.2:
 			value = -0.2
 		elif value > 1.2:
