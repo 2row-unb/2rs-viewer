@@ -100,7 +100,7 @@ func calculate_speed(y, ms):
 			speed_data.current = int(60000/(ms - speed_data.start_time))
 		else:
 			speed_data.start_time = ms
-	elif not speed_data.summit and speed_data.base and y > 0.9:
+	elif not speed_data.summit and speed_data.base and y > 0.9 and y < 5.0:
 		speed_data.summit = true
 		speed_data.base = false
 	pass
