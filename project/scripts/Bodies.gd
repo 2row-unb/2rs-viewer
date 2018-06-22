@@ -18,13 +18,6 @@ onready var ideal_animation = $Ideal/AnimationPlayer
 
 var current_state = -1
 
-var ul_default = null
-var ll_default = null
-var ur_default = null
-var lr_default = null
-
-var previous_ul_y = 0.0
-
 func _ready():
 	print("[INFO] Bodies: ready")
 	set_athlete_frame(0.1)
@@ -49,44 +42,35 @@ func update_ideal_animation(data):
 
 func update_athlete(data):
 	if data.state == data.IN_ACTIVITY:
-		var frame = data.ul[0]*2.5
-		if previous_ul_y > data.ul[0]:
-			frame = 5.0 - frame
-		previous_ul_y = data.ul[0]
+		var value = data.ul[0]
+		print(value)
+		if value < 0.0 or value > 5.0:
+			value = 0.1
+		elif value > 1.0:
+			value = 0.9
+		var frame = value*2.5
 		set_athlete_frame(frame)
 
-		if not ul_default:
-			ul_default = athlete_skeleton.get_bone_pose(LEG_UL)
-
 		# We should not do anything on the X axis
-		var transform = ul_default
+		var transform = athlete_skeleton.get_bone_pose(LEG_UL)
 		transform = transform.rotated(Z, -data.ul[1])
 		transform = transform.rotated(Y, -data.ul[0])
 		athlete_skeleton.set_bone_pose(LEG_UL, transform)
 
-		if not ur_default:
-			ur_default = athlete_skeleton.get_bone_pose(LEG_UR)
-
 		# We should not do anything on the X axis
-		transform = ur_default
+		transform = athlete_skeleton.get_bone_pose(LEG_UR)
 		transform = transform.rotated(Z, -data.ul[1])
 		transform = transform.rotated(Y, -data.ul[0])
 		athlete_skeleton.set_bone_pose(LEG_UR, transform)
 
-		if not ll_default:
-			ll_default = athlete_skeleton.get_bone_pose(LEG_LL)
-
 		# We should not do anything on the X axis
-		transform = ll_default
+		transform = athlete_skeleton.get_bone_pose(LEG_LL)
 		transform = transform.rotated(Z, -data.ll[1])
 		transform = transform.rotated(Y, -data.ll[0])
 		athlete_skeleton.set_bone_pose(LEG_LL, transform)
 
-		if not lr_default:
-			lr_default = athlete_skeleton.get_bone_pose(LEG_LR)
-
 		# We should not do anything on the X axis
-		transform = lr_default
+		transform = athlete_skeleton.get_bone_pose(LEG_LR)
 		transform = transform.rotated(Z, -data.ll[1])
 		transform = transform.rotated(Y, -data.ll[0])
 		athlete_skeleton.set_bone_pose(LEG_LR, transform)

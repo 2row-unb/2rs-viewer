@@ -18,6 +18,10 @@ config/icon="res://resources/icon.png"
 
 settings/fps/force_fps=10
 
+[display]
+
+window/size/borderless=true
+
 [rendering]
 
 quality/intended_usage/framebuffer_allocation=3
