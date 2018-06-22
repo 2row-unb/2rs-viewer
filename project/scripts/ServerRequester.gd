@@ -12,8 +12,8 @@ class Dataset:
 	const WAITING = 1
 	const IN_ACTIVITY = 2
 
-const URL = "http://localhost:5000/"
-# const URL = "http://192.168.1.101:5000/"
+# const URL = "http://localhost:5000/"
+const URL = "http://192.168.1.101:5000/"
 
 var data = Dataset.new()
 var mock = [0.0, 0.0, 0.0]
@@ -36,7 +36,7 @@ func extract_info(result):
 		data.state = result.state
 		if result.state == data.IN_ACTIVITY:
 			data.ul = result.ul
-			data.ll = result.ll
+			# data.ll = result.ll
 			data.difficulty = result.difficulty
 			data.force = result.force
 			data.timer = result.timer

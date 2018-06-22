@@ -70,17 +70,17 @@ func update_athlete(data):
 		transform = transform.rotated(Y, -data.ul[0])
 		athlete_skeleton.set_bone_pose(LEG_UR, transform)
 
-		# We should not do anything on the X axis
-		transform = athlete_skeleton.get_bone_pose(LEG_LL)
-		transform = transform.rotated(Z, -data.ll[1])
-		transform = transform.rotated(Y, -data.ll[0])
-		athlete_skeleton.set_bone_pose(LEG_LL, transform)
-
-		# We should not do anything on the X axis
-		transform = athlete_skeleton.get_bone_pose(LEG_LR)
-		transform = transform.rotated(Z, -data.ll[1])
-		transform = transform.rotated(Y, -data.ll[0])
-		athlete_skeleton.set_bone_pose(LEG_LR, transform)
+		# # We should not do anything on the X axis
+		# transform = athlete_skeleton.get_bone_pose(LEG_LL)
+		# transform = transform.rotated(Z, -data.ll[1])
+		# transform = transform.rotated(Y, -data.ll[0])
+		# athlete_skeleton.set_bone_pose(LEG_LL, transform)
+		#
+		# # We should not do anything on the X axis
+		# transform = athlete_skeleton.get_bone_pose(LEG_LR)
+		# transform = transform.rotated(Z, -data.ll[1])
+		# transform = transform.rotated(Y, -data.ll[0])
+		# athlete_skeleton.set_bone_pose(LEG_LR, transform)
 
 		calculate_speed(data.ul[0], OS.get_ticks_msec())
 	pass

@@ -58,7 +58,7 @@ func update_data(data, current_speed):
 	pass
 
 func update_status(data, current_speed):
-	var current_power = int(data.force * current_speed  * 0.062)
+	var current_power = int(data.force * current_speed  * 0.031)
 	power.text = str(current_power)
 	speed.text = str(current_speed)
 
