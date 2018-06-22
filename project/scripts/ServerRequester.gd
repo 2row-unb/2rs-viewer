@@ -14,9 +14,8 @@ class Dataset:
 	const WAITING = 1
 	const IN_ACTIVITY = 2
 
-# const URL = "http://localhost:5000/"
-const URL = "http://192.168.25.86:5000/"
-# const URL = "http://localhost:20000/"
+const URL = "http://localhost:5000/"
+# const URL = "http://192.168.25.85:5000/"
 
 var data = Dataset.new()
 
@@ -34,19 +33,15 @@ func clear_errors():
 
 func extract_info(result):
 	if result.has("state"):
+		data.state = result.state
 		if result.state == data.IN_ACTIVITY:
 			data.ul = result.ul
 			data.ll = result.ll
 			data.difficulty = result.difficulty
 			data.power = result.power
 			data.speed = result.speed
-			data.state = result.state
 			data.timer_minutes = int(result.timer) / 60
 			data.timer_seconds = int(result.timer) % 60
-		elif result.state == data.WAITING:
-			data.state = data.WAITING
-		else:
-			data.state = data.NO_RESPONSE
 	else:
 		data.state = data.NO_RESPONSE
 	pass
@@ -59,6 +54,5 @@ func _on_InfoEndpoint_request_completed(result, response_code, headers, body):
 	if response_code == 200:
 		extract_info(JSON.parse(body.get_string_from_utf8()).result)
 	else:
-		var error = "Não foi possível sincronizar os dados."
-		data.errors.push_back(error)
+		data.state = data.NO_RESPONSE
 	pass

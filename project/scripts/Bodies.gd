@@ -17,14 +17,17 @@ onready var ideal_skeleton = $Ideal/Armature/Skeleton
 onready var ideal_animation = $Ideal/AnimationPlayer
 
 var current_state = -1
+
 var ul_default = null
+var ll_default = null
 var ur_default = null
+var lr_default = null
+
+var previous_ul_y = 0.0
 
 func _ready():
 	print("[INFO] Bodies: ready")
-	athlete_animation.play("default")
-	athlete_animation.seek(0.1, true)
-	athlete_animation.stop()
+	set_athlete_frame(0.1)
 	pass
 
 func update_data(data):
@@ -46,26 +49,54 @@ func update_ideal_animation(data):
 
 func update_athlete(data):
 	if data.state == data.IN_ACTIVITY:
-		#print(abs(ideal_skeleton.get_bone_pose(LEG_UL)[0][0])*100)		
-		#athlete_animation.seek(abs(data.ul[0]), true)
+		var frame = data.ul[0]*2.5
+		if previous_ul_y > data.ul[0]:
+			frame = 5.0 - frame
+		previous_ul_y = data.ul[0]
+		set_athlete_frame(frame)
+
 		if not ul_default:
-			var default = athlete_skeleton.get_bone_pose(LEG_UL)
-			ul_default = default
+			ul_default = athlete_skeleton.get_bone_pose(LEG_UL)
+
+		# We should not do anything on the X axis
+		var transform = ul_default
+		transform = transform.rotated(Z, -data.ul[1])
+		transform = transform.rotated(Y, -data.ul[0])
+		athlete_skeleton.set_bone_pose(LEG_UL, transform)
+
 		if not ur_default:
-			var default = athlete_skeleton.get_bone_pose(LEG_UR)
-			ur_default = default
+			ur_default = athlete_skeleton.get_bone_pose(LEG_UR)
 
 		# We should not do anything on the X axis
-		var ul_transform = ul_default
-		ul_transform = ul_transform.rotated(Z, -data.ul[1])
-		ul_transform = ul_transform.rotated(Y, -data.ul[0])
-		athlete_skeleton.set_bone_pose(LEG_UL, ul_transform)
+		transform = ur_default
+		transform = transform.rotated(Z, -data.ul[1])
+		transform = transform.rotated(Y, -data.ul[0])
+		athlete_skeleton.set_bone_pose(LEG_UR, transform)
+
+		if not ll_default:
+			ll_default = athlete_skeleton.get_bone_pose(LEG_LL)
 
 		# We should not do anything on the X axis
-		var ur_transform = ur_default
-		ur_transform = ur_transform.rotated(Z, -data.ul[1])
-		ur_transform = ur_transform.rotated(Y, -data.ul[0])
-		athlete_skeleton.set_bone_pose(LEG_UR, ur_transform)
+		transform = ll_default
+		transform = transform.rotated(Z, -data.ll[1])
+		transform = transform.rotated(Y, -data.ll[0])
+		athlete_skeleton.set_bone_pose(LEG_LL, transform)
+
+		if not lr_default:
+			lr_default = athlete_skeleton.get_bone_pose(LEG_LR)
+
+		# We should not do anything on the X axis
+		transform = lr_default
+		transform = transform.rotated(Z, -data.ll[1])
+		transform = transform.rotated(Y, -data.ll[0])
+		athlete_skeleton.set_bone_pose(LEG_LR, transform)
+	pass
+
+func set_athlete_frame(seconds):
+	athlete_animation.play("default")
+	athlete_animation.seek(seconds, true)
+	athlete_animation.stop()
+	pass
 
 func _on_Ideal_animation_finished(animation):
 	ideal_animation.play(animation)
