@@ -25,7 +25,7 @@ func _ready():
 	print("[INFO] Hud: ready")
 	pass
 
-func update_data(data):
+func update_data(data, current_speed):
 	if current_state != data.state:
 		current_state = data.state
 		if current_state == data.NO_RESPONSE:
@@ -54,15 +54,16 @@ func update_data(data):
 			athlete_label.text = "Seu Exercício"
 
 	if current_state == data.IN_ACTIVITY:
-		update_status(data)
+		update_status(data, current_speed)
 	pass
 
-func update_status(data):
-	power.text = str(data.power)
-	speed.text = str(data.speed)
+func update_status(data, current_speed):
+	var current_power = int(data.force * current_speed  * 0.062)
+	power.text = str(current_power)
+	speed.text = str(current_speed)
 
-	minutes.text = "%02d" % data.timer_minutes
-	seconds.text = "%02d" % data.timer_seconds
+	minutes.text = "%02d" % (int(data.timer) / 60)
+	seconds.text = "%02d" % (int(data.timer) % 60)
 
 	difficulty.text = str(data.difficulty)
 

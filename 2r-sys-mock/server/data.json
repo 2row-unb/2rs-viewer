@@ -3,8 +3,7 @@
     "ul": [1.0, 0.0, 0.0],
     "ll": [-1.5, 0.0, 0.0],
     "difficulty": 2,
-    "power": 400,
-    "speed": 33,
+    "force": 200,
     "state": 2,
     "timer": 122
   }

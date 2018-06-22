@@ -6,6 +6,5 @@ func _ready():
 
 func _process(delta):
 	var data = $ServerRequester.get_current_data()
-	$Bodies.update_data(data)
-	$Hud.update_data(data)
+	$Hud.update_data(data, $Bodies.update_data(data))
 	pass

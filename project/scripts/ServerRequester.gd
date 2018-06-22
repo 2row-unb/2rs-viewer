@@ -4,20 +4,20 @@ class Dataset:
 	var ul = [0.0, 0.0, 0.0]
 	var ll = [0.0, 0.0, 0.0]
 	var state = 0
-	var power = 0
+	var force = 0
 	var speed = 0
-	var timer_minutes = 0
-	var timer_seconds = 0
+	var timer = 0
 	var difficulty = 0
-	var errors = Array()
 	const NO_RESPONSE = 0
 	const WAITING = 1
 	const IN_ACTIVITY = 2
 
 const URL = "http://localhost:5000/"
-# const URL = "http://192.168.25.85:5000/"
+# const URL = "http://192.168.1.101:5000/"
 
 var data = Dataset.new()
+var mock = [0.0, 0.0, 0.0]
+var mock_signal = 1
 
 func _ready():
 	print("[INFO] ServerRequester: ready")
@@ -38,10 +38,8 @@ func extract_info(result):
 			data.ul = result.ul
 			data.ll = result.ll
 			data.difficulty = result.difficulty
-			data.power = result.power
-			data.speed = result.speed
-			data.timer_minutes = int(result.timer) / 60
-			data.timer_seconds = int(result.timer) % 60
+			data.force = result.force
+			data.timer = result.timer
 	else:
 		data.state = data.NO_RESPONSE
 	pass

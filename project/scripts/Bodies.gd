@@ -1,5 +1,11 @@
 extends Node
 
+class SpeedData:
+	var summit = false
+	var base = false
+	var start_time = 0
+	var current = 0
+
 const LEG_UL = 29
 const LEG_LL = 30
 
@@ -16,6 +22,8 @@ onready var athlete_animation = $Athlete/AnimationPlayer
 onready var ideal_skeleton = $Ideal/Armature/Skeleton
 onready var ideal_animation = $Ideal/AnimationPlayer
 
+var speed_data = SpeedData.new()
+
 var current_state = -1
 
 func _ready():
@@ -28,7 +36,7 @@ func update_data(data):
 		current_state = data.state
 		update_ideal_animation(data)
 	update_athlete(data)
-	pass
+	return speed_data.current
 
 func update_ideal_animation(data):
 	if current_state == data.NO_RESPONSE:
@@ -43,7 +51,6 @@ func update_ideal_animation(data):
 func update_athlete(data):
 	if data.state == data.IN_ACTIVITY:
 		var value = data.ul[0]
-		print(value)
 		if value < 0.0 or value > 5.0:
 			value = 0.1
 		elif value > 1.0:
@@ -74,12 +81,28 @@ func update_athlete(data):
 		transform = transform.rotated(Z, -data.ll[1])
 		transform = transform.rotated(Y, -data.ll[0])
 		athlete_skeleton.set_bone_pose(LEG_LR, transform)
+
+		calculate_speed(data.ul[0], OS.get_ticks_msec())
 	pass
 
 func set_athlete_frame(seconds):
 	athlete_animation.play("default")
 	athlete_animation.seek(seconds, true)
 	athlete_animation.stop()
+	pass
+
+func calculate_speed(y, ms):
+	if not speed_data.base and y < 0.1:
+		speed_data.base = true
+		if speed_data.summit:
+			speed_data.base = false
+			speed_data.summit = false
+			speed_data.current = int(60000/(ms - speed_data.start_time))
+		else:
+			speed_data.start_time = ms
+	elif not speed_data.summit and speed_data.base and y > 0.9:
+		speed_data.summit = true
+		speed_data.base = false
 	pass
 
 func _on_Ideal_animation_finished(animation):
