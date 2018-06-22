@@ -18,6 +18,7 @@ onready var ideal_animation = $Ideal/AnimationPlayer
 
 var current_state = -1
 var ul_default = null
+var ur_default = null
 
 func _ready():
 	print("[INFO] Bodies: ready")
@@ -50,11 +51,21 @@ func update_athlete(data):
 		if not ul_default:
 			var default = athlete_skeleton.get_bone_pose(LEG_UL)
 			ul_default = default
-		var transform = ul_default
-		transform = transform.rotated(X, data.ul[0])
-		transform = transform.rotated(Y, data.ul[1])
-		transform = transform.rotated(Z, data.ul[2])
-		athlete_skeleton.set_bone_pose(LEG_UL, transform)
+		if not ur_default:
+			var default = athlete_skeleton.get_bone_pose(LEG_UR)
+			ur_default = default
+
+		# We should not do anything on the X axis
+		var ul_transform = ul_default
+		ul_transform = ul_transform.rotated(Z, -data.ul[1])
+		ul_transform = ul_transform.rotated(Y, -data.ul[0])
+		athlete_skeleton.set_bone_pose(LEG_UL, ul_transform)
+
+		# We should not do anything on the X axis
+		var ur_transform = ur_default
+		ur_transform = ur_transform.rotated(Z, -data.ul[1])
+		ur_transform = ur_transform.rotated(Y, -data.ul[0])
+		athlete_skeleton.set_bone_pose(LEG_UR, ur_transform)
 
 func _on_Ideal_animation_finished(animation):
 	ideal_animation.play(animation)
