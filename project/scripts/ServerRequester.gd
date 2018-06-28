@@ -34,6 +34,7 @@ func clear_errors():
 	pass
 
 func extract_info(result):
+	print(result)
 	if result.has("state"):
 		data.state = result.state
 		if result.state == data.IN_ACTIVITY:
