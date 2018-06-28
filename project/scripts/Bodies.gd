@@ -25,8 +25,8 @@ onready var ideal_animation = $Ideal/AnimationPlayer
 var speed_data = SpeedData.new()
 
 var current_state = -1
-var mini = 100
-var maxi = -100
+# var mini = 100
+# var maxi = -100
 
 func _ready():
 	print("[INFO] Bodies: ready")
@@ -53,13 +53,13 @@ func update_ideal_animation(data):
 func update_athlete(data):
 	if data.state == data.IN_ACTIVITY:
 		var value = data.ul[0]
-		if value > maxi:
-			maxi = value
-		if value < mini:
-			mini = value
-		print("---")
-		print(mini)
-		print(maxi)
+		# if value > maxi and value < 5.0:
+		# 	maxi = value
+		# if value < mini:
+		# 	mini = value
+		# print("---")
+		# print(mini)
+		# print(maxi)
 		if value < -0.2:
 			value = -0.2
 		elif value > 1.2:
@@ -69,19 +69,19 @@ func update_athlete(data):
 
 		# We should not do anything on the X axis
 		var transform = athlete_skeleton.get_bone_pose(LEG_UL)
-		transform = transform.rotated(Z, -data.ul[1])
+		# transform = transform.rotated(Z, -data.ul[1])
 		transform = transform.rotated(Y, -value)
 		athlete_skeleton.set_bone_pose(LEG_UL, transform)
 
 		# We should not do anything on the X axis
 		transform = athlete_skeleton.get_bone_pose(LEG_UR)
-		transform = transform.rotated(Z, -data.ul[1])
+		# transform = transform.rotated(Z, -data.ul[1])
 		transform = transform.rotated(Y, -value)
 		athlete_skeleton.set_bone_pose(LEG_UR, transform)
 
 		# We should not do anything on the X axis
 		transform = athlete_skeleton.get_bone_pose(LEG_LL)
-		transform = transform.rotated(Z, -data.ul[1])
+		# transform = transform.rotated(Z, -data.ul[1])
 		transform = transform.rotated(Y, value*2)
 		athlete_skeleton.set_bone_pose(LEG_LL, transform)
 
@@ -108,7 +108,7 @@ func calculate_speed(y, ms):
 			speed_data.current = int(60000/(ms - speed_data.start_time))
 		else:
 			speed_data.start_time = ms
-	elif not speed_data.summit and speed_data.base and y > 0.7 and y < 2.0:
+	elif not speed_data.summit and speed_data.base and y > 0.6 and y < 2.0:
 		speed_data.summit = true
 		speed_data.base = false
 	pass

@@ -14,6 +14,7 @@ class Dataset:
 	const IN_ACTIVITY = 2
 
 # const URL = "http://localhost:5000/"
+# const URL = "http://192.168.1.103:5000/"
 const URL = "http://192.168.1.103:5000/"
 
 var data = Dataset.new()
